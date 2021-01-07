@@ -376,7 +376,6 @@ const IndexPage = props => {
        removeOverlay={() => setOpen(!open)}
      />
    )}
-    <h1> Hello world</h1>
     </Layout>
    )
 }
