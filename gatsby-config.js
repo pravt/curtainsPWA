@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: `gatsby-source-prismic`,
       options: {
-        repositoryName: process.env.PRISMIC_REPOSITORY_NAME, // PRISMIC_REPOSITORY_NAME
+        repositoryName: "curtains",
         accessToken: process.env.PRISMIC_ACCESS_TOKEN, // PRISMIC_ACCESS_TOKEN
       },
     },
