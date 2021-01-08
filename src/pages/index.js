@@ -272,71 +272,17 @@ const IndexPage = props => {
   return(
     <Layout>
      <Wrapper url={backgroundURL}>
-     
-     {backgroundURL && <button className="hamburger hamburger--boring" type="button" onClick={() => setOpen(!open)}>
+     <button className="hamburger hamburger--boring" type="button" onClick={() => setOpen(!open)}>
        <span className="hamburger-box">
          <span className="hamburger-inner"></span>
        </span>
-     </button>}
-
-     <ToplineImg src={url} />
-     <TopLineR src={url} />
-     <TopLineL src={url} />
-     <LinkedInInput
-       src={linkedInURL}
-       type="image"
-       onClick={() => {
-         window.location = linkedInLink;
-       }}
-     ></LinkedInInput>
-     <LinkedInRight
-       src={linkedInURL}
-       type="image"
-       id="lr"
-       onClick={() => {
-         window.location = linkedInLink;
-       }}
-     />
-     <FaceBookInput
-       type="image"
-       value=""
-       onclick=""
-       src={fbIconURL}
-       onClick={() => {
-         window.location = facebookLink;
-       }}
-     />
-     <InstagramInput
-       src={instaIconURL}
-       type="image"
-       value=""
-       onClick={() => {
-         window.location = instagramLink;
-       }}
-     />
-     <Whatsapp
-       src={whatsappIconURL}
-       type="image"
-       value=""
-       onClick={() => {
-         window.location = whastsappchatlink;
-       }}
-     />
-     <Email
-       src={emailIconURL}
-       type="image"
-       value=""
-       onClick={() => {
-         window.location = mailtolink;
-       }}
-     />
-
+     </button>
+    
      <CurtainLogo src={logo_url} type="image" />
 
      <LogoDescription>{logoDescription} </LogoDescription>
 
-     <Visit>{headerLeftTitle}</Visit>
-     <Share>{headerRightTitle}</Share>
+     
      <ThreeD
        src={threeModelLogo}
        type="image"
