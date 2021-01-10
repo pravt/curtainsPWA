@@ -8,3 +8,15 @@ div#iframe-wrapper iframe {
     height: 50%;
     width: 50%;
 }
+
+.carousel {
+    position: absolute;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    right: 100px;
+    height: 50%;
+    width: 30%;
+
+}

@@ -12,11 +12,13 @@ import PrismicLogo from "../components/PrismicLogo";
 import OverlayModel from '../components/overlayModel';
 import VideoOverlay from '../components/videoOverlay';
 import ThreeDOverlay from '../components/threeDOverlay';
+import PdfCarousel from '../components/pdfCarousel';
 
 import "../portret.css";
 import "../socialIcons.css";
 import "../hamburgers.css";
 import "../globalStyles.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Wrapper = styled.section`
   position: relative;
@@ -161,6 +163,9 @@ const IndexPage = props => {
 
   const [openVideOverlay, setVideoOverlay] = React.useState(false);
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false);
+
+  const [openPdfOverlay, setPdfOverlay] = React.useState(false);
+
   const items = data.prismicBlogpostBodyHeaderline.items[0];
   const { url } = data.prismicBlogpost.data.topline;
   const backgroundURL = data.prismicBlogpost.data.background_image.url;
@@ -196,7 +201,6 @@ const IndexPage = props => {
          <span className="hamburger-inner"></span>
        </span>
      </button>
-    
      <CurtainLogo src={logo_url} type="image" />
      <LogoDescription>{logoDescription} </LogoDescription>
      <ThreeD
@@ -209,9 +213,7 @@ const IndexPage = props => {
        src={pdfLogoURL}
        type="image"
        value=""
-       onClick={() => {
-         window.location = pdfDocLink;
-       }}
+       onClick={() => setPdfOverlay(!openPdfOverlay)}
      />
      <Video
        src={videoURL}
@@ -245,13 +247,16 @@ const IndexPage = props => {
        removeOverlay={() => setVideoOverlay(!openVideOverlay)}
      />
    )}
+   {openPdfOverlay && (
+     <PdfCarousel
+       removeOverlay={() => setPdfOverlay(!openPdfOverlay)}
+     />
+   )}
+  
     </Layout>
    )
 }
-
-
 export default IndexPage
-
 
 export const pageQuery = graphql`
   query {
