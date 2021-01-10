@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function VideoOverlay({ removeOverlay }) {
+function ThreeDOverlay({ removeOverlay }) {
   const { allPrismicBlogpostBodyVideoMapSlice } = useStaticQuery(
     graphql`
       query {
@@ -11,20 +11,18 @@ function VideoOverlay({ removeOverlay }) {
             node {
               id
               primary {
-                embed_video_url {
+                matterport3dmodel {
                   provider_name
                   provider_url
-                  title
-                  author_name
-                  author_url
-                  type
-                  height
-                  width
                   version
-                  thumbnail_height
                   thumbnail_width
+                  height
                   thumbnail_url
+                  thumbnail_height
+                  title
+                  width
                   html
+                  type
                   embed_url
                 }
               }
@@ -35,7 +33,8 @@ function VideoOverlay({ removeOverlay }) {
     `
   )
 
-  const embedVideo = allPrismicBlogpostBodyVideoMapSlice.edges[0].node.primary.embed_video_url;
+  const embedVideo =
+    allPrismicBlogpostBodyVideoMapSlice.edges[0].node.primary.matterport3dmodel
   return (
     <div className="overlay">
       <button
@@ -46,18 +45,17 @@ function VideoOverlay({ removeOverlay }) {
         Close
       </button>
       <div id="iframe-wrapper" className="iframe-wrapper">
-      <div dangerouslySetInnerHTML={{ __html: embedVideo.html }} />
-       
+        <div dangerouslySetInnerHTML={{ __html: embedVideo.html }} />
       </div>
     </div>
   )
 }
 
-VideoOverlay.defaultProps = {
+ThreeDOverlay.defaultProps = {
   vlink: '',
 }
 
-VideoOverlay.propTypes = {
-  removeOverlay: PropTypes.func
+ThreeDOverlay.propTypes = {
+  removeOverlay: PropTypes.func,
 }
-export default VideoOverlay
+export default ThreeDOverlay

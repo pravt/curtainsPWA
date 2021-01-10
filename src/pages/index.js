@@ -11,6 +11,7 @@ import Degree from "../components/Degree";
 import PrismicLogo from "../components/PrismicLogo";
 import OverlayModel from '../components/overlayModel';
 import VideoOverlay from '../components/videoOverlay';
+import ThreeDOverlay from '../components/threeDOverlay';
 
 import "../portret.css";
 import "../socialIcons.css";
@@ -199,15 +200,12 @@ const IndexPage = props => {
      <CurtainLogo src={logo_url} type="image" />
 
      <LogoDescription>{logoDescription} </LogoDescription>
-
      
      <ThreeD
        src={threeModelLogo}
        type="image"
        value=""
-       onClick={() => {
-         window.location = _3dmodelURL;
-       }}
+       onClick={() => setVideoOverlay(!openVideOverlay)}
      />
      <PDFLogo
        src={pdfLogoURL}
@@ -240,7 +238,11 @@ const IndexPage = props => {
    )}
    {openVideOverlay && (
      <VideoOverlay
-      vlink={watchvideolink}
+       removeOverlay={() => setVideoOverlay(!openVideOverlay)}
+     />
+   )}
+   {openVideOverlay && (
+     <ThreeDOverlay
        removeOverlay={() => setVideoOverlay(!openVideOverlay)}
      />
    )}
