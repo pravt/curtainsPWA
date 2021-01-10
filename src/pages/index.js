@@ -160,6 +160,7 @@ const IndexPage = props => {
   const [open, setOpen] = React.useState(false);
 
   const [openVideOverlay, setVideoOverlay] = React.useState(false);
+  const [openthreeDOverlay, setThreeDOverlay] = React.useState(false);
   const items = data.prismicBlogpostBodyHeaderline.items[0];
   const { url } = data.prismicBlogpost.data.topline;
   const backgroundURL = data.prismicBlogpost.data.background_image.url;
@@ -187,7 +188,6 @@ const IndexPage = props => {
     data.prismicBlogpostBodyHeaderline.primary.header_right_title.text;
   const headerLeftTitle =
     data.prismicBlogpostBodyHeaderline.primary.header_left_title.text;
-  console.log(" props",props.data)
   return(
     <Layout>
      <Wrapper url={backgroundURL}>
@@ -198,14 +198,12 @@ const IndexPage = props => {
      </button>
     
      <CurtainLogo src={logo_url} type="image" />
-
      <LogoDescription>{logoDescription} </LogoDescription>
-     
      <ThreeD
        src={threeModelLogo}
        type="image"
        value=""
-       onClick={() => setVideoOverlay(!openVideOverlay)}
+       onClick={() => setThreeDOverlay(!openthreeDOverlay)}
      />
      <PDFLogo
        src={pdfLogoURL}
@@ -236,13 +234,14 @@ const IndexPage = props => {
        removeOverlay={() => setOpen(!open)}
      />
    )}
-   {openVideOverlay && (
-     <VideoOverlay
-       removeOverlay={() => setVideoOverlay(!openVideOverlay)}
+  
+   {openthreeDOverlay && (
+     <ThreeDOverlay
+       removeOverlay={() => setThreeDOverlay(!openthreeDOverlay)}
      />
    )}
    {openVideOverlay && (
-     <ThreeDOverlay
+     <VideoOverlay
        removeOverlay={() => setVideoOverlay(!openVideOverlay)}
      />
    )}
