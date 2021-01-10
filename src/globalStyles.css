@@ -1,0 +1,10 @@
+div#iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    right: 100px;
+    height: 50%;
+    width: 50%;
+}

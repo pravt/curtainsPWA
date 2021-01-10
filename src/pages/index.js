@@ -1,19 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout/'
-import SEO from '../components/seo/'
-import Article from '../components/article'
-
-import styled from "styled-components";
-
-import LinkedInInput from "../components/LinkedInInput";
-import FaceBookInput from "../components/FaceBookInput";
-import InstagramInput from "../components/InstagramInput";
-import Whatsapp from "../components/Whatsapp";
-import Visit from "../components/Visit";
-import Share from "../components/Share";
-import Email from "../components/Email";
-import LinkedInRight from "../components/LinkedInRight";
+import styled from "styled-components"
 import CurtainLogo from "../components/CurtainLogo";
 import LogoDescription from "../components/LogoDescription";
 import ThreeD from "../components/ThreeD";
@@ -21,9 +9,13 @@ import PDFLogo from "../components/PDFLogo";
 import Video from "../components/Video";
 import Degree from "../components/Degree";
 import PrismicLogo from "../components/PrismicLogo";
+import OverlayModel from '../components/overlayModel';
+import VideoOverlay from '../components/videoOverlay';
+
 import "../portret.css";
 import "../socialIcons.css";
 import "../hamburgers.css";
+import "../globalStyles.css";
 
 const Wrapper = styled.section`
   position: relative;
@@ -162,82 +154,11 @@ const MenuTrigger = styled.input`
     content: "";
   }
 `;
-const Modal = ({ removeOverlay, insta, linked, fb, wp, email }) => {
-  const [open, setOpen] = React.useState(false);
-  const [shareopen, setShareOpen] = React.useState(false);
-  return (
-    <div className="overlay">
-      <button
-        type="button"
-        className="overlay-close"
-        onClick={(e) => removeOverlay()}
-      >
-        Close
-      </button>
-      <nav>
-        <ul>
-          <li>
-            <a>Home</a>
-          </li>
-          <li>
-            <a
-              onClick={() => {
-                setOpen(false);
-                setShareOpen(!shareopen);
-              }}
-            >
-              Share
-            </a>
-            {shareopen && (
-              <ul className="socialUL">
-                <li className="grid-column">
-                  <img src={wp}></img>
-                </li>
-                <li className="grid-column">
-                  <img src={email}></img>
-                </li>
-                <li className="grid-column">
-                  <img src={linked}></img>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li className="social">
-            <a
-              onClick={() => {
-                setShareOpen(false);
-                setOpen(!open);
-              }}
-            >
-              Social
-            </a>
-            {open && (
-              <ul className="socialUL">
-                <li className="grid-column">
-                  <img src={insta}></img>
-                </li>
-                <li className="grid-column">
-                  <img src={linked}></img>
-                </li>
-                <li className="grid-column">
-                  <img src={fb}></img>
-                </li>
-              </ul>
-            )}
-          </li>
-
-          <li>
-            <a>Save</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  );
-};
 const IndexPage = props => {
   const { data } = props;
   const [open, setOpen] = React.useState(false);
-  console.log(" data ", data);
+
+  const [openVideOverlay, setVideoOverlay] = React.useState(false);
   const items = data.prismicBlogpostBodyHeaderline.items[0];
   const { url } = data.prismicBlogpost.data.topline;
   const backgroundURL = data.prismicBlogpost.data.background_image.url;
@@ -256,10 +177,7 @@ const IndexPage = props => {
   const pdfLogoURL = items.pdf_logo.url;
   const videoURL = items.video_logo.url;
   const prismicLogoURL = items.prismic_logo.url;
-  const linkedInLink = items.linkedinurl.url;
-  const instagramLink = items.instalink.url;
-  const facebookLink = items.facebookurl.url;
-  const watchVideoLink = items.watchvideolink.url;
+  const watchvideolink = items.watchvideolink.url;
   const _3dmodelURL = items._3dmodellink.url;
   const pdfDocLink = items.pdflink.url;
   const whastsappchatlink = items.whastsappchatlink.url;
@@ -303,9 +221,7 @@ const IndexPage = props => {
        src={videoURL}
        type="image"
        value=""
-       onClick={() => {
-         window.location = watchVideoLink;
-       }}
+       onClick={() => setVideoOverlay(!openVideOverlay)}
      />
      <Degree src={degreeIconURL} type="image" value="" onclick="" />
      <PrismicLogo src={prismicLogoURL} type="image" value="" onclick="" />
@@ -313,13 +229,19 @@ const IndexPage = props => {
    </Wrapper>
 
    {open && (
-     <Modal
+     <OverlayModel
        insta={instaIconURL}
        linked={linkedInURL}
        fb={fbIconURL}
        wp={whatsappIconURL}
        email={emailIconURL}
        removeOverlay={() => setOpen(!open)}
+     />
+   )}
+   {openVideOverlay && (
+     <VideoOverlay
+      vlink={watchvideolink}
+       removeOverlay={() => setVideoOverlay(!openVideOverlay)}
      />
    )}
     </Layout>
