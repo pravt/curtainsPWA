@@ -13,13 +13,20 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Carousel} from 'react-bootstrap';
 import pdficon from '../../files/pdficon.png'
-function PdfCarousel({ }) {
+function PdfCarousel({ removeOverlay }) {
 
   return (
     <div className="overlay">
+    <button
+        type="button"
+        className="overlay-close"
+        onClick={e => removeOverlay()}
+      >
+        Close
+      </button>
     <Carousel>
         <Carousel.Item>
-        <img src={pdficon}></img>
+        <img src={pdficon} onClick={() => console.log("click")}></img>
         </Carousel.Item>
         <Carousel.Item>
         <img src={pdficon}></img>

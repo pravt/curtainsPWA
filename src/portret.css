@@ -48,8 +48,8 @@ a {
 
 /* Overlay closing cross */
 .overlay .overlay-close {
-	width: 80px;
-	height: 80px;
+	width: 30px;
+	height: 30px;
 	position: absolute;
 	right: 20px;
 	top: 20px;
