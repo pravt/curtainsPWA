@@ -14,10 +14,11 @@ import VideoOverlay from '../components/videoOverlay';
 import ThreeDOverlay from '../components/threeDOverlay';
 import PdfCarousel from '../components/pdfCarousel';
 
+
+import "../globalStyles.css";
 import "../portret.css";
 import "../socialIcons.css";
 import "../hamburgers.css";
-import "../globalStyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Wrapper = styled.section`

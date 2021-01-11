@@ -67,6 +67,9 @@ a {
   body {
     margin: 0;
   }
+  .carousel-item {
+    left: 0% ;
+   }
 }
 @media (orientation: portrait) {
   .overlay{
