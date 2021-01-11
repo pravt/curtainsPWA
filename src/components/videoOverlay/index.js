@@ -46,7 +46,7 @@ function VideoOverlay({ removeOverlay }) {
         Close
       </button>
       <div id="iframe-wrapper" className="iframe-wrapper">
-      <div dangerouslySetInnerHTML={{ __html: embedVideo.html }} />
+      <div className= "iframe-video-div" dangerouslySetInnerHTML={{ __html: embedVideo.html }} />
        
       </div>
     </div>

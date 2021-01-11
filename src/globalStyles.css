@@ -24,3 +24,33 @@ div#iframe-wrapper iframe {
 .carousel-item {
  left: 40%;
 }
+
+.overlay .pdfIframeContainer{
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    position: relative;
+    width: 100vh;
+    height: 100%;
+}
+
+.overlay .pdfIframeContainer{
+   
+    width: 100%;
+}
+
+.iframe-video-div{
+    left: 25%;
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    top: 25%;
+}
+
+.iframe-video-div iframe{
+    height: 100% !important;
+    width: 100% !important;
+}
+

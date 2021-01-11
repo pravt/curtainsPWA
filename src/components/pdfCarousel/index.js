@@ -1,17 +1,12 @@
-/**
- * PdfCarousel component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Carousel } from 'react-bootstrap'
-import pdficon from '../../files/pdficon.png'
+import pdficon from '../../files/pdficon.png';
+import PdfViewer from '../../components/pdfViewer';
 function PdfCarousel({ removeOverlay }) {
+  const [open, setOpen] = React.useState(false);
+
+  
   const { prismicBlogpostBodyPdfslice } = useStaticQuery(
     graphql`
       query {
@@ -46,12 +41,10 @@ function PdfCarousel({ removeOverlay }) {
       }
     `
   )
-  const tesco = prismicBlogpostBodyPdfslice.primary.tesco_pdf.url;
-  const tName = prismicBlogpostBodyPdfslice.primary.tesco_pdf.name;
+   const tName = prismicBlogpostBodyPdfslice.primary.tesco_pdf.name;
   const boots = prismicBlogpostBodyPdfslice.primary.boots_pdf.url;
   const curtains = prismicBlogpostBodyPdfslice.primary.curtains_pdf.url;
-  console.log(" tesco ", tesco);
-
+  const primaryObject =  prismicBlogpostBodyPdfslice.primary;
   return (
     <div className="overlay">
       <button
@@ -61,16 +54,13 @@ function PdfCarousel({ removeOverlay }) {
       >
         Close
       </button>
+      {open && <PdfViewer fileURL={boots} closePreview={() => setOpen(!open)}/>}
       <Carousel>
-        <Carousel.Item>
-        <img src={pdficon} alt={tName}/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src={pdficon} />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src={pdficon} />
-        </Carousel.Item>
+      {Object.keys(primaryObject).map(item=>{
+        return (<Carousel.Item key={item.url}>
+        <img src={pdficon} alt={tName} onClick={e => setOpen(!open)}/>
+      </Carousel.Item>)
+  })}
       </Carousel>
     </div>
   )
