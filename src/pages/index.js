@@ -14,6 +14,7 @@ import VideoOverlay from '../components/videoOverlay';
 import ThreeDOverlay from '../components/threeDOverlay';
 import PdfCarousel from '../components/pdfCarousel';
 
+import Wrapper from '../components/wrapper';
 
 import "../globalStyles.css";
 import "../portret.css";
@@ -21,14 +22,13 @@ import "../socialIcons.css";
 import "../hamburgers.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Wrapper = styled.section`
+/*const Wrapper = styled.section`
   position: relative;
   background-size: cover;
   height: 100vh;
   background-image: url(${(props) => props.url});
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  z-index: 1;
   @media (orientation: portrait) {
     height: 100vh;
     position: relative;
@@ -36,17 +36,7 @@ const Wrapper = styled.section`
     background-image: url(${(props) => props.url});
     background-position: 50% 50%;
   }
-  &:after {
-    position: absolute;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    color: #fff;
-  }
-`;
+`; */
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
@@ -196,7 +186,8 @@ const IndexPage = props => {
     data.prismicBlogpostBodyHeaderline.primary.header_left_title.text;
   return(
     <Layout>
-     <Wrapper url={backgroundURL}>
+   
+     <Wrapper bgurl={backgroundURL}>
      <button className="hamburger hamburger--boring" type="button" onClick={() => setOpen(!open)}>
        <span className="hamburger-box">
          <span className="hamburger-inner"></span>
