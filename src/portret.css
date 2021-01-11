@@ -70,6 +70,9 @@ a {
   .carousel-item {
     left: 0% ;
    }
+   .carousel{
+     width: 100%;
+   }
 }
 @media (orientation: portrait) {
   .overlay{
