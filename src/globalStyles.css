@@ -2,6 +2,9 @@
     height: 100vh;
     display: flex;
     position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
 }
 
 .flex-item .align-top {
