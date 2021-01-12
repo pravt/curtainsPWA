@@ -1,67 +1,7 @@
 *{
   box-sizing: border-box;
 }
-.overlay {
-  position: absolute; /* Sit on top of the page content */
-  display: block; /* Hidden by default */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  color:#FFF;
-  background-color: rgba(0,0,0,0.9); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
-}
 
-
-.overlay nav {
-  text-align: center;
-  position: relative;
-  top: 50%;
-  height: 60%;
-  transform: translateY(-50%);
-  text-transform: uppercase;
-}
-
-.overlay ul li {
-  backface-visibility: hidden;
-  min-height: 54px;
-  height: calc(100%/5);
-
-}
-
-.overlay ul li a {
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 74.5px;
-  display: block;
-  color: #FFF;
-  transition: color 0.2s;
-}
-a {
-  text-decoration: none;
-  outline: none;
-}
-
-/* Overlay closing cross */
-.overlay .overlay-close {
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	right: 20px;
-	top: 20px;
-	overflow: hidden;
-	border: none;
-	background: url(./files/cross.png) no-repeat center center;
-	text-indent: 200%;
-	color: transparent;
-	outline: none;
-  z-index: 100;
-  cursor: pointer;
-}
 
 @media (orientation: portrait) {
   body {
@@ -98,6 +38,19 @@ a {
 .overlay ul {
   padding: 0;
   margin: 0;
+}
+.pdfViewer {
+  background-color: red;
+  width: 65%;
+  height: 50%;
+  left: 18%;
+  position: absolute;
+  top: 10%;
+  margin: 0;
+}
+.carousel{
+  top: 70%;
+  height: 25vh;
 }
 }
 

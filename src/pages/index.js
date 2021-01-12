@@ -186,7 +186,6 @@ const IndexPage = props => {
     data.prismicBlogpostBodyHeaderline.primary.header_left_title.text;
   return(
     <Layout>
-   
      <Wrapper bgurl={backgroundURL}>
      <button className="hamburger hamburger--boring" type="button" onClick={() => setOpen(!open)}>
        <span className="hamburger-box">
@@ -244,7 +243,7 @@ const IndexPage = props => {
        removeOverlay={() => setPdfOverlay(!openPdfOverlay)}
      />
    )}
-  
+    
     </Layout>
    )
 }

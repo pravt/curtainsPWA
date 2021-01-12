@@ -10,9 +10,7 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
         type="button"
         className="overlay-close"
         onClick={e => removeOverlay()}
-      >
-        Close
-      </button>
+      />
       <nav>
         <ul>
           <li>

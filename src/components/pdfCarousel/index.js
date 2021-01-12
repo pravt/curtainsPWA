@@ -1,12 +1,11 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Carousel } from 'react-bootstrap'
-import pdficon from '../../files/pdficon.png';
-import PdfViewer from '../../components/pdfViewer';
+import pdficon from '../../files/pdficon.png'
+import PdfViewer from '../../components/pdfViewer'
 function PdfCarousel({ removeOverlay }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
-  
   const { prismicBlogpostBodyPdfslice } = useStaticQuery(
     graphql`
       query {
@@ -41,10 +40,10 @@ function PdfCarousel({ removeOverlay }) {
       }
     `
   )
-   const tName = prismicBlogpostBodyPdfslice.primary.tesco_pdf.name;
-  const boots = prismicBlogpostBodyPdfslice.primary.boots_pdf.url;
-  const curtains = prismicBlogpostBodyPdfslice.primary.curtains_pdf.url;
-  const primaryObject =  prismicBlogpostBodyPdfslice.primary;
+  const tName = prismicBlogpostBodyPdfslice.primary.tesco_pdf.name
+  const boots = prismicBlogpostBodyPdfslice.primary.boots_pdf.url
+  const curtains = prismicBlogpostBodyPdfslice.primary.curtains_pdf.url
+  const primaryObject = prismicBlogpostBodyPdfslice.primary
   return (
     <div className="overlay">
       <button
@@ -54,13 +53,19 @@ function PdfCarousel({ removeOverlay }) {
       >
         Close
       </button>
-      {open && <PdfViewer fileURL={boots} closePreview={() => setOpen(!open)}/>}
+      <div className="pdfViewer">
+        {open && (
+          <PdfViewer fileURL={boots} closePreview={() => setOpen(!open)} />
+        )}
+      </div>
       <Carousel>
-      {Object.keys(primaryObject).map(item=>{
-        return (<Carousel.Item key={item.url}>
-        <img src={pdficon} alt={tName} onClick={e => setOpen(!open)}/>
-      </Carousel.Item>)
-  })}
+        {Object.keys(primaryObject).map(item => {
+          return (
+            <Carousel.Item key={item.url}>
+              <img src={pdficon} alt={tName} onClick={e => setOpen(!open)} />
+            </Carousel.Item>
+          )
+        })}
       </Carousel>
     </div>
   )
