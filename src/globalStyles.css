@@ -24,16 +24,27 @@ div#iframe-wrapper iframe {
 
 .carousel {
     position: absolute;
-    top: 40%;
+    top: 45%;
     bottom: 0;
     left: 0;
     margin: auto;
     right: 100px;
     height: 50%;
-    width: 25%;
-
+    width: 100%;
 }
 
+.carouselBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    flex-wrap: wrap;
+    width: 10vh;
+}
+
+.carouselBottom img {
+}
 .carousel-item {
  left: 40%;
 }
@@ -90,10 +101,7 @@ div#iframe-wrapper iframe {
       position: absolute;
       top: 10%;
   }
-  .carousel{
-    width: 100%;
-    height: 25%;
-  }
+ 
   .overlay nav {
     text-align: center;
     position: relative;

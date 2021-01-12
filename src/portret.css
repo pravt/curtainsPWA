@@ -13,6 +13,10 @@
    .carousel{
      width: 100%;
    }
+   
+   .carouselBottom {
+    display: inline;
+}
 }
 @media (orientation: portrait) {
   .overlay{
@@ -40,7 +44,7 @@
   margin: 0;
 }
 .pdfViewer {
-  background-color: red;
+  background-color: black;
   width: 65%;
   height: 50%;
   left: 18%;
@@ -75,4 +79,35 @@
     border-radius: 20px;
     border: none;
   }
+  .carousel {
+    top: 70%;
+  }
+  .carouselBottom {
+    display: inline;
+    background-color: blueviolet;
+}
+
+} 
+
+@media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape) {
+  
+  .carouselBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    flex-wrap: wrap;
+    width: 10vh;
+    bottom: 10vh;
+}
+.pdfViewer{
+  width: 67%;
+  height: 63%;
+  top: 5%;
+  
+}
+.carousel {
+  top: 45%
+}
 } 
