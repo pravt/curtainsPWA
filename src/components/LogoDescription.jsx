@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const LogoDescription = styled.p`
   left: 18%;
-  top: 48%;
+  top: 40%;
   right: 51%;
   position: absolute;
   text-align: center;
@@ -11,9 +11,10 @@ const LogoDescription = styled.p`
   background: transparent;
   font-size: 1em;
   letter-spacing: 0px;
+  height: 100%;
 
   @media (orientation: portrait) {
-    top: 28%;
+    top: 30%;
     left: 28%;
     width: 45%;
     position: absolute;
@@ -24,7 +25,7 @@ const LogoDescription = styled.p`
   }
 
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-    top: 48%;
+    top: 38%;
     left: 18%;
     position: absolute;
     text-align: center;

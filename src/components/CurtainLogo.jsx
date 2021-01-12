@@ -4,7 +4,7 @@ import styled from "styled-components";
 const CurtainLogo = styled.input`
   left: 19%;
   position: absolute;
-  top: 30%;
+  top: 20%;
   width: 28%;
   cursor: default;
 

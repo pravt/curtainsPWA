@@ -17,6 +17,16 @@
    .carouselBottom {
     display: inline;
 }
+.description {
+  position: absolute;
+  color: white;
+  background: transparent;
+  font-size: 1em;
+  letter-spacing: 0px;
+  left: 18%;
+  top: 30%;
+  text-align: center;width: 65%;
+}
 }
 @media (orientation: portrait) {
   .overlay{

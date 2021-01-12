@@ -15,6 +15,7 @@ import ThreeDOverlay from '../components/threeDOverlay';
 import PdfCarousel from '../components/pdfCarousel';
 
 import Wrapper from '../components/wrapper';
+import Description from '../components/description';
 
 import "../globalStyles.css";
 import "../portret.css";
@@ -193,7 +194,7 @@ const IndexPage = props => {
        </span>
      </button>
      <CurtainLogo src={logo_url} type="image" />
-     <LogoDescription>{logoDescription} </LogoDescription>
+     <Description desc={logoDescription}></Description>
      <ThreeD
        src={threeModelLogo}
        type="image"
