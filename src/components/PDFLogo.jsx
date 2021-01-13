@@ -6,6 +6,7 @@ const PDFLogo = styled.input`
   top: 44%;
   position: absolute;
   width: 24%;
+  outline: none;
 
   @media (orientation: portrait) {
     top: 70%;
