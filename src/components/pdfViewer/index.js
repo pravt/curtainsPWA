@@ -1,6 +1,6 @@
 import React from 'react'
 function PdfViewer({ fileURL, closePreview }) {
-
+const urlTorender = "https://drive.google.com/viewerng/viewer?embedded=true&url="+fileURL;
   return (
       <>
        <button
@@ -11,7 +11,7 @@ function PdfViewer({ fileURL, closePreview }) {
         Close
       </button>
         <div className="pdfIframeContainer">
-        <iframe height="100%" width="100%" src={fileURL} frameBorder="0"/>
+        <embed src={urlTorender} width="500" height="375"/>
         </div>
         </>
   )
