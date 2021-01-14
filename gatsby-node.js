@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const pageTemplate = require.resolve(`./src/04.templates/page.js`)
+  const pageTemplate = require.resolve(`./src/pages/index.js`)
 
   console.log(`🙏🏼 Begin creating pages from Prismic...`)
   
