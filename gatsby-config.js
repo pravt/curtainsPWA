@@ -16,6 +16,19 @@ module.exports = {
       options: {
         repositoryName: "curtains",
         accessToken: process.env.PRISMIC_ACCESS_TOKEN, // PRISMIC_ACCESS_TOKEN
+        path: "/brochure",
+        previews: true,
+        sharpKeys: [/image|photo|picture|logo|icon/],
+        pages: [
+          {
+            // (optional, builds pages dynamically)
+            type: "Brochure", // TypeName from prismic
+            match: "/brochure/:uid", // Pages will be generated under this pattern
+            path: "/brochure", // Placeholder page for unpublished documents
+            component: require.resolve("./src/pages/index.js"),
+            // component: require.resolve("./src/04.templates/brochure.js"),
+          },
+        ],
       },
     },
     {
