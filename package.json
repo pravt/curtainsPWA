@@ -1,9 +1,9 @@
 {
-  "name": "source-demo-blog",
+  "name": "hotel-brochure-template",
   "private": true,
-  "description": "Example of blog with Gatsby, Prismic CMS & Netlify from gatsby starter default",
+  "description": "contains the code base for the hotel brochure ",
   "version": "0.1.0",
-  "author": "Rémi Bonnet <bonnet.rem@gmail.com>",
+  "author": "Sekhar karri <recipedia.dev@gmail.com>",
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.1.4",
@@ -24,6 +24,7 @@
     "react-bootstrap": "^1.4.3",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-iframe": "^1.8.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

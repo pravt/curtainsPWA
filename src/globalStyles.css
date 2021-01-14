@@ -32,8 +32,8 @@ div#iframe-wrapper iframe {
     left: 0;
     margin: auto;
     right: 100px;
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
 }
 
 .hideCarousel {
