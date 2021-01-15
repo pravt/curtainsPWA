@@ -152,8 +152,7 @@ const MenuTrigger = styled.input`
 `
 const IndexPage = props => {
   const { data } = props
-  const [open, setOpen] = React.useState(false)
-
+  const [open, setOpen] = React.useState(false);
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
 
@@ -163,6 +162,7 @@ const IndexPage = props => {
   const items = data.prismicBlogpostBodyHeaderline.items[0]
   const { url } = data.prismicBlogpost.data.topline
   const backgroundURL = data.prismicBlogpost.data.background_image.url
+  
   let logo_url = data.prismicBlogpost.data.logo_image.url
   const linkedInURL =
     data.prismicBlogpostBodyHeaderline.items[0].social_linkedin_logo.url
@@ -265,8 +265,8 @@ const IndexPage = props => {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query {
-    prismicBlogpost {
+  query($uid: String) {
+    prismicBlogpost(uid: {eq:$uid}) {
       data {
         logo_image {
           alt
