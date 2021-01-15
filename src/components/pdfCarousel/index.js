@@ -1,47 +1,43 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { Carousel } from 'react-bootstrap'
 import pdficon from '../../files/pdficon.png'
 import PdfViewer from '../../components/pdfViewer'
 function PdfCarousel({ removeOverlay }) {
   const [open, setOpen] = React.useState(false)
-  const [activePdfUrl, setActivePdfUrl] = React.useState(undefined);
+  const [activePdfUrl, setActivePdfUrl] = React.useState(undefined)
 
-  const { prismicBlogpostBodyPdfslice } = useStaticQuery(
-    graphql`
-      query {
-        prismicBlogpostBodyPdfslice {
-          primary {
-            tesco_pdf {
-              link_type
-              name
-              kind
-              url
-              size
-              target
-            }
-            boots_pdf {
-              link_type
-              name
-              kind
-              url
-              size
-              target
-            }
-            curtains_pdf {
-              link_type
-              name
-              kind
-              url
-              size
-              target
+  const { prismicBlogpostBodyPdfslice } = graphql`
+      query($uid: String) {
+          prismicBlogpost(uid: { eq: $uid }) {
+            uid
+            id
+            data {
+              logo_image {
+                url
+              }
+              body {
+                ... on PrismicBlogpostBodyPdfslice {
+                  primary {
+                    document_1 {
+                      url
+                    }
+                    document_2 {
+                      url
+                    }
+                    document_3 {
+                      url
+                    }
+                  }
+                }
+                __typename
+              }
             }
           }
-        }
       }
     `
-  )
   const primaryObject = prismicBlogpostBodyPdfslice.primary
+  console.log(' primaryObject ', primaryObject)
   return (
     <div className="overlay">
       <button
@@ -54,26 +50,26 @@ function PdfCarousel({ removeOverlay }) {
       {open && (
         <PdfViewer fileURL={activePdfUrl} closePreview={() => setOpen(!open)} />
       )}
-        <Carousel  className={open ? 'hideCarousel' : ''} indicators={false}>
-          {Object.keys(primaryObject).map(item => {
-            const url = primaryObject[item].url
-            const name = primaryObject[item].name
-            return (
-              <Carousel.Item key={item}>
-                <div className="carouselBottom" key={item}>
-                  <img
-                    src={pdficon}
-                    onClick={e => {
-                      setActivePdfUrl(url)
-                      setOpen(!open)
-                    }}
-                  />
-                  <p>{name.substring(0, name.indexOf('.pdf'))}</p>
-                </div>
-              </Carousel.Item>
-            )
-          })}
-        </Carousel>
+      <Carousel className={open ? 'hideCarousel' : ''} indicators={false}>
+        {Object.keys(primaryObject).map(item => {
+          const url = primaryObject[item].url
+          const name = primaryObject[item].name
+          return (
+            <Carousel.Item key={item}>
+              <div className="carouselBottom" key={item}>
+                <img
+                  src={pdficon}
+                  onClick={e => {
+                    setActivePdfUrl(url)
+                    setOpen(!open)
+                  }}
+                />
+                <p>{name.substring(0, name.indexOf('.pdf'))}</p>
+              </div>
+            </Carousel.Item>
+          )
+        })}
+      </Carousel>
     </div>
   )
 }
