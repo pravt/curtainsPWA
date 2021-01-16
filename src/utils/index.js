@@ -1,7 +1,9 @@
-const bodyName = 'PrismicBlogpostBodyPdfslice'
+const pdfBodyName = 'PrismicBlogpostBodyPdfslice';
+const embedVideoSliceName = 'PrismicBlogpostBodyVideoMapSlice';
+
 export const getPDfDocuments = data => {
   let documents = data.prismicBlogpost.data.body
-    .filter(item => item['__typename'] === bodyName)
+    .filter(item => item['__typename'] === pdfBodyName)
     .map(i => i.primary)[0]
   var result = []
 
@@ -12,4 +14,11 @@ export const getPDfDocuments = data => {
       }
     })
   return result
+}
+
+export const getEmbedVideoURL = data => {
+    let embedVideo = data.prismicBlogpost.data.body
+    .filter(item => item['__typename'] === embedVideoSliceName)
+    .map(i => i.primary)[0];
+    return embedVideo && embedVideo.embed_video_url ? embedVideo.embed_video_url.html: null;
 }

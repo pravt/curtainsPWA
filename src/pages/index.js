@@ -16,13 +16,12 @@ import PdfCarousel from '../components/pdfCarousel'
 import Wrapper from '../components/wrapper'
 import Description from '../components/description'
 import DegreeOverlay from '../components/DegreeOverlay'
-import {getPDfDocuments} from '../utils/index';
+import { getPDfDocuments, getEmbedVideoURL } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
 import '../socialIcons.css'
 import '../hamburgers.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 
 const FooterLine = styled.img`
   left: 5%;
@@ -34,8 +33,9 @@ const FooterLine = styled.img`
 
 const IndexPage = props => {
   const { data } = props
-  const pdfDocuments = getPDfDocuments(data);
-   const [open, setOpen] = React.useState(false)
+  const pdfDocuments = getPDfDocuments(data)
+  const videoHtml = getEmbedVideoURL(data)
+  const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
 
@@ -80,18 +80,20 @@ const IndexPage = props => {
           value=""
           onClick={() => setThreeDOverlay(!openthreeDOverlay)}
         />
-       {pdfDocuments.length>0 && <PDFLogo
-          src={pdfLogoURL}
-          type="image"
-          value=""
-          onClick={() => setPdfOverlay(!openPdfOverlay)}
-        />}
-        <Video
+        {pdfDocuments.length > 0 && (
+          <PDFLogo
+            src={pdfLogoURL}
+            type="image"
+            value=""
+            onClick={() => setPdfOverlay(!openPdfOverlay)}
+          />
+        )}
+       {videoHtml &&  <Video
           src={videoURL}
           type="image"
           value=""
           onClick={() => setVideoOverlay(!openVideOverlay)}
-        />
+        />}
         <Degree
           src={degreeIconURL}
           type="image"
@@ -127,10 +129,13 @@ const IndexPage = props => {
         />
       )}
       {openVideOverlay && (
-        <VideoOverlay removeOverlay={() => setVideoOverlay(!openVideOverlay)} />
+        <VideoOverlay embedVideoHtml={videoHtml} removeOverlay={() => setVideoOverlay(!openVideOverlay)} />
       )}
       {openPdfOverlay && (
-        <PdfCarousel documents= {pdfDocuments} removeOverlay={() => setPdfOverlay(!openPdfOverlay)} />
+        <PdfCarousel
+          documents={pdfDocuments}
+          removeOverlay={() => setPdfOverlay(!openPdfOverlay)}
+        />
       )}
     </Layout>
   )
@@ -186,6 +191,14 @@ export const pageQuery = graphql`
               document_3 {
                 url
                 name
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyVideoMapSlice {
+            primary {
+              embed_video_url {
+                embed_url
+                html
               }
             }
           }
