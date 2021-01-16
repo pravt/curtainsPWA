@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
-import pdfIcon from '../../files/pdfIcon.png'
+import pdfIcon from '../../files/pdficon.png'
 import PdfViewer from '../../components/pdfViewer'
 
 function PdfCarousel({ documents, removeOverlay }) {
