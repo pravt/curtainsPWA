@@ -14,7 +14,7 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
       <nav>
         <ul>
           <li>
-            <a>Home</a>
+            <a href="_#">Home</a>
           </li>
           <li>
             <a
@@ -22,19 +22,20 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
                 setOpen(false)
                 setShareOpen(!shareOpen)
               }}
+              href="_#"
             >
               Share
             </a>
             {shareOpen && (
               <ul className="socialUL">
                 <li className="grid-column">
-                  <img src={wp} />
+                  <img src={wp} alt="wp"/>
                 </li>
                 <li className="grid-column">
-                  <img src={email} />
+                  <img src={email} alt="email"/>
                 </li>
                 <li className="grid-column">
-                  <img src={linked} />
+                  <img src={linked} alt="linked"/>
                 </li>
               </ul>
             )}
@@ -45,25 +46,25 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
                 setShareOpen(false)
                 setOpen(!open)
               }}
-            >
+              href="_#" >
               Social
             </a>
             {open && (
               <ul className="socialUL">
                 <li className="grid-column">
-                  <img src={insta} />
+                  <img src={insta} alt="insta"/>
                 </li>
                 <li className="grid-column">
-                  <img src={linked} />
+                  <img src={linked} alt="linked"/>
                 </li>
                 <li className="grid-column">
-                  <img src={fb} />
+                  <img src={fb} alt="fb"/>
                 </li>
               </ul>
             )}
           </li>
           <li>
-            <a>Save</a>
+            <a href="_#">Save</a>
           </li>
         </ul>
       </nav>

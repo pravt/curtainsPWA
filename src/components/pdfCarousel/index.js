@@ -1,43 +1,11 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import { Carousel } from 'react-bootstrap'
-import pdficon from '../../files/pdficon.png'
+import pdfIcon from '../../files/pdfIcon.png'
 import PdfViewer from '../../components/pdfViewer'
-function PdfCarousel({ removeOverlay }) {
+
+function PdfCarousel({ documents, removeOverlay }) {
   const [open, setOpen] = React.useState(false)
   const [activePdfUrl, setActivePdfUrl] = React.useState(undefined)
-
-  const { prismicBlogpostBodyPdfslice } = graphql`
-      query($uid: String) {
-          prismicBlogpost(uid: { eq: $uid }) {
-            uid
-            id
-            data {
-              logo_image {
-                url
-              }
-              body {
-                ... on PrismicBlogpostBodyPdfslice {
-                  primary {
-                    document_1 {
-                      url
-                    }
-                    document_2 {
-                      url
-                    }
-                    document_3 {
-                      url
-                    }
-                  }
-                }
-                __typename
-              }
-            }
-          }
-      }
-    `
-  const primaryObject = prismicBlogpostBodyPdfslice.primary
-  console.log(' primaryObject ', primaryObject)
   return (
     <div className="overlay">
       <button
@@ -51,14 +19,15 @@ function PdfCarousel({ removeOverlay }) {
         <PdfViewer fileURL={activePdfUrl} closePreview={() => setOpen(!open)} />
       )}
       <Carousel className={open ? 'hideCarousel' : ''} indicators={false}>
-        {Object.keys(primaryObject).map(item => {
-          const url = primaryObject[item].url
-          const name = primaryObject[item].name
+        {Object.keys(documents).map(item => {
+          const url = documents[item].url
+          const name = documents[item].name
           return (
             <Carousel.Item key={item}>
               <div className="carouselBottom" key={item}>
                 <img
-                  src={pdficon}
+                alt=""
+                  src={pdfIcon}
                   onClick={e => {
                     setActivePdfUrl(url)
                     setOpen(!open)

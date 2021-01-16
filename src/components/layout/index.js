@@ -1,6 +1,5 @@
 import { css, Global } from '@emotion/react'
 import React from 'react'
-import Helmet from 'react-helmet'
 
 const globalStyle = css`
   html,

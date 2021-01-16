@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout/'
 import styled from 'styled-components'
 import CurtainLogo from '../components/CurtainLogo'
-import LogoDescription from '../components/LogoDescription'
 import ThreeD from '../components/ThreeD'
 import PDFLogo from '../components/PDFLogo'
 import Video from '../components/Video'
@@ -24,93 +23,6 @@ import '../socialIcons.css'
 import '../hamburgers.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-/*const Wrapper = styled.section`
-  position: relative;
-  background-size: cover;
-  height: 100vh;
-  background-image: url(${(props) => props.url});
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  @media (orientation: portrait) {
-    height: 100vh;
-    position: relative;
-    background-size: cover;
-    background-image: url(${(props) => props.url});
-    background-position: 50% 50%;
-  }
-`; */
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`
-const ToplineImg = styled.img`
-  top: 10%;
-  right: 33%;
-  left: 32%;
-  width: 33%;
-  height: 0.3%;
-  position: absolute;
-  @media (orientation: portrait) {
-    top: 6%;
-    left: 32%;
-    right: 28%;
-    width: 31%;
-    height: 0.2%;
-    position: absolute;
-  }
-`
-
-const TopLineR = styled.img`
-  top: 10%;
-  left: 5%;
-  width: 7%;
-  height: 0.3%;
-  position: absolute;
-  @media (orientation: portrait) {
-    top: 6%;
-    right: 8%;
-    width: 7%;
-    height: 0.2%;
-    position: absolute;
-  }
-`
-
-const TopLineL = styled.img`
-  top: 10%;
-  right: 8%;
-  width: 7%;
-  height: 0.3%;
-  position: absolute;
-  @media (orientation: portrait) {
-    top: 6%;
-    right: 8%;
-    width: 7%;
-    height: 0.2%;
-    position: absolute;
-  }
-`
-
-const LogoImg = styled.div`
-  left: 19%;
-  top: 30%;
-  position: absolute;
-  width: 29%;
-  height: 210px;
-  background-image: url(${props => props.url});
-  background-repeat: no-repeat;
-`
-
-const LinkedInLogo = styled.input`
-  left: 20%;
-  font-family: Arial;
-  fontsize: 2.4vw;
-  color: black;
-  top: 7%;
-  height: 6%;
-  position: absolute;
-  src: url(${props => props.url});
-`
 
 const FooterLine = styled.img`
   left: 5%;
@@ -120,39 +32,10 @@ const FooterLine = styled.img`
   position: absolute;
 `
 
-const Paragraph = styled.p`
-  top: 5.1%;
-  left: ${props => props.lvalue};
-  right: ${props => props.rvalue};
-  position: absolute;
-  height: 4%;
-  color: white;
-  font-size: 1.7em;
-  font-weight: bold;
-`
-
-const MenuTrigger = styled.input`
-  text-decoration: none;
-  font-size: 0.9em;
-  outline: none;
-  color: #f7f7f7;
-  height: 40px;
-  position: relative;
-  width: 40px;
-  &:before {
-    position: absolute;
-    top: 10px;
-    left: 2;
-    width: 40px;
-    height: 6px;
-    background: #fff;
-    box-shadow: 0 6px #34495e, 0 12px #fff, 0 18px #34495e, 0 24px #fff;
-    content: '';
-  }
-`
 const IndexPage = props => {
   const { data } = props
-  const [open, setOpen] = React.useState(false);
+  const documentSlices = data.prismicBlogpost.data.body.filter(item=>item['__typename'] === 'PrismicBlogpostBodyPdfslice').map(i=>i.primary);
+  const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
 
@@ -160,9 +43,7 @@ const IndexPage = props => {
   const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false)
 
   const items = data.prismicBlogpostBodyHeaderline.items[0]
-  const { url } = data.prismicBlogpost.data.topline
   const backgroundURL = data.prismicBlogpost.data.background_image.url
-  
   let logo_url = data.prismicBlogpost.data.logo_image.url
   const linkedInURL =
     data.prismicBlogpostBodyHeaderline.items[0].social_linkedin_logo.url
@@ -178,16 +59,7 @@ const IndexPage = props => {
   const pdfLogoURL = items.pdf_logo.url
   const videoURL = items.video_logo.url
   const prismicLogoURL = items.prismic_logo.url
-  const watchvideolink = items.watchvideolink.url
-  const _3dmodelURL = items._3dmodellink.url
-  const pdfDocLink = items.pdflink.url
-  const whastsappchatlink = items.whastsappchatlink.url
-  const mailtolink = items.mailtolink.url
-  const headerRightTitle =
-    data.prismicBlogpostBodyHeaderline.primary.header_right_title.text
-  const headerLeftTitle =
-    data.prismicBlogpostBodyHeaderline.primary.header_left_title.text
-    const modelUrl = data.prismicBlogpost.data.model_url.url
+  const modelUrl = data.prismicBlogpost.data.model_url.url
   return (
     <Layout>
       <Wrapper bgurl={backgroundURL}>
@@ -233,8 +105,9 @@ const IndexPage = props => {
       {openDegreeOverlay && (
         <DegreeOverlay
           removeOverlay={() => {
-            setOpenDegreeOverlay(!openDegreeOverlay)}}
-            modelUrl={modelUrl}
+            setOpenDegreeOverlay(!openDegreeOverlay)
+          }}
+          modelUrl={modelUrl}
         />
       )}
       {open && (
@@ -257,7 +130,7 @@ const IndexPage = props => {
         <VideoOverlay removeOverlay={() => setVideoOverlay(!openVideOverlay)} />
       )}
       {openPdfOverlay && (
-        <PdfCarousel removeOverlay={() => setPdfOverlay(!openPdfOverlay)} />
+        <PdfCarousel documents= {documentSlices[0]} removeOverlay={() => setPdfOverlay(!openPdfOverlay)} />
       )}
     </Layout>
   )
@@ -266,7 +139,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query($uid: String) {
-    prismicBlogpost(uid: {eq:$uid}) {
+    prismicBlogpost(uid: { eq: $uid }) {
       data {
         logo_image {
           alt
@@ -297,6 +170,25 @@ export const pageQuery = graphql`
         }
         model_url {
           url
+        }
+
+        body {
+          ... on PrismicBlogpostBodyPdfslice {
+            primary {
+              document_1 {
+                url
+                name
+              }
+              document_2 {
+                url
+                name
+              }
+              document_3 {
+                url
+                name
+              }
+            }
+          }
         }
       }
     }
