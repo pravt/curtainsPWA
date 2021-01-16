@@ -19,12 +19,11 @@ function PdfCarousel({ documents, removeOverlay }) {
         <PdfViewer fileURL={activePdfUrl} closePreview={() => setOpen(!open)} />
       )}
       <Carousel className={open ? 'hideCarousel' : ''} indicators={false}>
-        {Object.keys(documents).map(item => {
-          const url = documents[item].url
-          const name = documents[item].name
+        {documents.map(item => {
+          const {url, name} = item;
           return (
-            <Carousel.Item key={item}>
-              <div className="carouselBottom" key={item}>
+            <Carousel.Item key={name}>
+              <div className="carouselBottom" key={name}>
                 <img
                 alt=""
                   src={pdfIcon}
