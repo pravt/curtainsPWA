@@ -3,16 +3,15 @@ import styled from "styled-components";
 const CurtainLogo = styled.input`
   left: 19%;
   position: absolute;
-  top: 20%;
+ 
   width: 28%;
   cursor: default;
 
   @media (orientation: portrait) {
-    top: 21%;
-    left: 30%;
-    height: 6%;
+    top: 2%;
+    left: 4%;
     position: absolute;
-    width: 40%;
+    width: 100%;
   }
 `;
 
