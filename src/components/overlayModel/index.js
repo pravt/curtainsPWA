@@ -14,7 +14,7 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
       <nav>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a>Home</a>
           </li>
           <li>
             <a
@@ -22,7 +22,7 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
                 setOpen(false)
                 setShareOpen(!shareOpen)
               }}
-              href="#"
+              
             >
               Share
             </a>
@@ -46,7 +46,7 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
                 setShareOpen(false)
                 setOpen(!open)
               }}
-              href="#" >
+              >
               Social
             </a>
             {open && (
@@ -64,7 +64,7 @@ function OverlayModel({ removeOverlay, insta, linked, fb, wp, email }) {
             )}
           </li>
           <li>
-            <a href="#">Save</a>
+            <a>Save</a>
           </li>
         </ul>
       </nav>
