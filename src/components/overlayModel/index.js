@@ -9,14 +9,16 @@ function OverlayModel({
   wp,
   email,
   socialURLs,
+  commContent
 }) {
   const { facebook_url, instagram_url, linkedin_url } = socialURLs
   const fburl = facebook_url.url
   const instaUrl = instagram_url.url;
   const linkedUrl = linkedin_url.url;
-  console.log(' fburl ', fburl)
+  const {map_url, phone_number,website_url, email_address }=commContent;
   const [open, setOpen] = React.useState(false)
   const [shareOpen, setShareOpen] = React.useState(false)
+  const [contactOpen, setContactOpen] = React.useState(false)
   return (
     <div className="overlay">
       <button
@@ -27,7 +29,27 @@ function OverlayModel({
       <nav>
         <ul>
           <li>
-            <a>Home</a>
+            <a  onClick={() => {
+                setOpen(false)
+                setShareOpen(false)
+                setContactOpen(!contactOpen)
+              }}>Contact</a>
+            {contactOpen && (
+              <ul className="contactUL">
+                <li className="grid-column">
+                  phone: {phone_number.text}
+                </li>
+                <li className="grid-column">
+                  email: {email_address.text}
+                </li>
+                <li className="grid-column">
+                  website:  {website_url.text}
+                </li>
+                <li className="grid-column">
+                   <a href={map_url.text}>location</a>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <a
@@ -88,9 +110,6 @@ function OverlayModel({
                 </li>
               </ul>
             )}
-          </li>
-          <li>
-            <a>Save</a>
           </li>
         </ul>
       </nav>

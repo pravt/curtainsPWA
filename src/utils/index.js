@@ -1,6 +1,8 @@
 const pdfBodyName = 'PrismicBlogpostBodyPdfslice';
 const embedVideoSliceName = 'PrismicBlogpostBodyVideoMapSlice';
 const socialSliceName = 'PrismicBlogpostBodySocial';
+const menuSliceName = 'PrismicBlogpostBodyMenu';
+const commSliceName = 'PrismicBlogpostBodyCommunications';
 
 export const getPDfDocuments = data => {
   let documents = data.prismicBlogpost.data.body
@@ -25,8 +27,21 @@ export const getEmbedVideoURL = data => {
 }
 
 
+export const getMenuBgColor = data => {
+  return data.prismicBlogpost.data.body
+  .filter(item => item['__typename'] === menuSliceName)
+  .map(i => i.primary)[0];
+}
+
+
 export const getSocialUrls = data => {
   return data.prismicBlogpost.data.body
   .filter(item => item['__typename'] === socialSliceName)
+  .map(i => i.primary)[0];
+}
+
+export const getCommContent = data => {
+  return data.prismicBlogpost.data.body
+  .filter(item => item['__typename'] === commSliceName)
   .map(i => i.primary)[0];
 }

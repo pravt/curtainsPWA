@@ -49,8 +49,26 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `standalone`,
-        icon: `src/static/curtain.png`, // This path is relative to the root of the site.
-        crossOrigin: `use-credentials`
+        crossOrigin: `use-credentials`,
+        cache_busting_mode: `none`,
+        icon: `favicons/favicon-32x32.png`,
+        icons: [
+          {
+            src: `favicons/pwa-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `favicons/pwa-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+          {
+            src: `favicons/tile70x70.png`,
+            sizes: `70x70`,
+            type: `image/png`,
+          },
+        ]
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -12,11 +12,17 @@ import OverlayModel from '../components/overlayModel'
 import VideoOverlay from '../components/videoOverlay'
 import ThreeDOverlay from '../components/threeDOverlay'
 import PdfCarousel from '../components/pdfCarousel'
-
+import MenuBurger from '../components/menuBurger'
 import Wrapper from '../components/wrapper'
 import Description from '../components/description'
 import DegreeOverlay from '../components/DegreeOverlay'
-import { getPDfDocuments, getEmbedVideoURL, getSocialUrls } from '../utils/index'
+import {
+  getPDfDocuments,
+  getEmbedVideoURL,
+  getSocialUrls,
+  getMenuBgColor,
+  getCommContent
+} from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
 import '../socialIcons.css'
@@ -29,6 +35,7 @@ const FooterLine = styled.img`
   width: 80%;
   height: 0.3%;
   position: absolute;
+  outline: none;
 `
 
 const IndexPage = props => {
@@ -36,6 +43,8 @@ const IndexPage = props => {
   const pdfDocuments = getPDfDocuments(data)
   const videoHtml = getEmbedVideoURL(data)
   const socialURLs = getSocialUrls(data)
+  const menuBgColor = getMenuBgColor(data)
+  const commContent = getCommContent(data)
   const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
@@ -61,18 +70,16 @@ const IndexPage = props => {
   const videoURL = items.video_logo.url
   const prismicLogoURL = items.prismic_logo.url
   const modelUrl = data.prismicBlogpost.data.model_url.url
+
   return (
     <Layout>
       <Wrapper bgurl={backgroundURL}>
-        <button
-          className="hamburger hamburger--boring"
-          type="button"
-          onClick={() => setOpen(!open)}
-        >
-          <span className="hamburger-box">
-            <span className="hamburger-inner" />
-          </span>
-        </button>
+        <MenuBurger
+          bgColor={menuBgColor.menu_bgcolor}
+          openOverlay={() => {
+            setOpen(!open)
+          }}
+        />
         <CurtainLogo src={logo_url} type="image" />
         <Description desc={logoDescription} />
         <ThreeD
@@ -124,6 +131,7 @@ const IndexPage = props => {
           email={emailIconURL}
           removeOverlay={() => setOpen(!open)}
           socialURLs={socialURLs}
+          commContent={commContent}
         />
       )}
 
@@ -219,6 +227,27 @@ export const pageQuery = graphql`
               }
               instagram_url {
                 url
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyMenu {
+            primary {
+              menu_bgcolor
+            }
+          }
+          ... on PrismicBlogpostBodyCommunications {
+            primary {
+              map_url {
+                text
+              }
+              phone_number {
+                text
+              }
+              website_url {
+                text
+              }
+              email_address {
+                text
               }
             }
           }
