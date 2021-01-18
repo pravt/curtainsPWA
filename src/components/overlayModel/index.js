@@ -4,14 +4,16 @@ import PropTypes from 'prop-types'
 function OverlayModel({
   removeOverlay,
   insta,
-  linked,
   fb,
   wp,
   email,
   socialURLs,
   commContent
 }) {
+  
   const { facebook_url, instagram_url, linkedin_url } = socialURLs
+  
+  
   const fburl = facebook_url.url
   const instaUrl = instagram_url.url;
   const linkedUrl = linkedin_url.url;
@@ -69,7 +71,7 @@ function OverlayModel({
                   <img src={email} alt="email" />
                 </li>
                 <li className="grid-column">
-                  <img src={linked} alt="linked" />
+                  <img src={linkedin_url} alt="linked" />
                 </li>
               </ul>
             )}
@@ -93,7 +95,7 @@ function OverlayModel({
                   />
                 </li>
                 <li className="grid-column">
-                  <img src={linked} alt="linked" 
+                  <img src={linkedin_url} alt="linked" 
                     onClick={() => {
                       window.location = linkedUrl
                     }}

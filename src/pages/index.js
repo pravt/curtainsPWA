@@ -55,8 +55,6 @@ const IndexPage = props => {
   const items = data.prismicBlogpostBodyHeaderline.items[0]
   const backgroundURL = data.prismicBlogpost.data.background_image.url
   let logo_url = data.prismicBlogpost.data.logo_image.url
-  const linkedInURL =
-    data.prismicBlogpostBodyHeaderline.items[0].social_linkedin_logo.url
   logo_url = logo_url.substring(0, logo_url.indexOf('.png') + 4)
   const footerLineURL = data.prismicBlogpost.data.footer_line.url
   const logoDescription = data.prismicBlogpost.data.logo_description.text
@@ -75,7 +73,7 @@ const IndexPage = props => {
     <Layout>
       <Wrapper bgurl={backgroundURL}>
         <MenuBurger
-          bgColor={menuBgColor.menu_bgcolor}
+          bgColor={menuBgColor?menuBgColor.menu_bgcolor:'black'}
           openOverlay={() => {
             setOpen(!open)
           }}
@@ -125,7 +123,6 @@ const IndexPage = props => {
       {open && (
         <OverlayModel
           insta={instaIconURL}
-          linked={linkedInURL}
           fb={fbIconURL}
           wp={whatsappIconURL}
           email={emailIconURL}
@@ -258,11 +255,6 @@ export const pageQuery = graphql`
       id
       items {
         social_linked_logo_text {
-          alt
-          copyright
-          url
-        }
-        social_linkedin_logo {
           alt
           copyright
           url
