@@ -3,6 +3,7 @@ const embedVideoSliceName = 'PrismicBlogpostBodyVideoMapSlice';
 const socialSliceName = 'PrismicBlogpostBodySocial';
 const menuSliceName = 'PrismicBlogpostBodyMenu';
 const commSliceName = 'PrismicBlogpostBodyCommunications';
+const socialLogosSliceName = 'PrismicBlogpostBodySociallogos';
 
 export const getPDfDocuments = data => {
   let documents = data.prismicBlogpost.data.body
@@ -45,3 +46,10 @@ export const getCommContent = data => {
   .filter(item => item['__typename'] === commSliceName)
   .map(i => i.primary)[0];
 }
+
+export const getSocialLogosUrls = data => {
+  return data.prismicBlogpost.data.body
+  .filter(item => item['__typename'] === socialLogosSliceName)
+  .map(i => i.primary)[0];
+}
+

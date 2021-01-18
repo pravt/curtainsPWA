@@ -8,15 +8,21 @@ function OverlayModel({
   wp,
   email,
   socialURLs,
-  commContent
+  commContent,
+  socialLogoUrls
 }) {
   
-  const { facebook_url, instagram_url, linkedin_url } = socialURLs
+  const { facebook_url, instagram_url, linkedin_url, whatsapp_url, mail_url } = socialURLs
+  const {linkedin}=socialLogoUrls
   
   
   const fburl = facebook_url.url
   const instaUrl = instagram_url.url;
   const linkedUrl = linkedin_url.url;
+  const wu = whatsapp_url.url;
+  const murl = mail_url.url;
+  const whatsappUrl = wu.substring(wu.indexOf("whatsapp"), wu.length);
+
   const {map_url, phone_number,website_url, email_address }=commContent;
   const [open, setOpen] = React.useState(false)
   const [shareOpen, setShareOpen] = React.useState(false)
@@ -65,13 +71,19 @@ function OverlayModel({
             {shareOpen && (
               <ul className="socialUL">
                 <li className="grid-column">
-                  <img src={wp} alt="wp" />
+                  <img src={wp} alt="wp"  onClick={() => {
+                      window.location = whatsappUrl
+                    }}/> 
                 </li>
                 <li className="grid-column">
-                  <img src={email} alt="email" />
+                  <img src={email} alt="email" onClick={() => {
+                      window.location = murl
+                    }}/> 
                 </li>
                 <li className="grid-column">
-                  <img src={linkedin_url} alt="linked" />
+                  <img src={linkedin.url} alt="linked"  onClick={() => {
+                      window.location = linkedUrl
+                    }}/>
                 </li>
               </ul>
             )}
@@ -95,7 +107,7 @@ function OverlayModel({
                   />
                 </li>
                 <li className="grid-column">
-                  <img src={linkedin_url} alt="linked" 
+                  <img src={linkedin.url} alt="linked" 
                     onClick={() => {
                       window.location = linkedUrl
                     }}

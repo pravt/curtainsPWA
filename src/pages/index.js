@@ -21,7 +21,8 @@ import {
   getEmbedVideoURL,
   getSocialUrls,
   getMenuBgColor,
-  getCommContent
+  getCommContent,
+  getSocialLogosUrls
 } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
@@ -45,6 +46,7 @@ const IndexPage = props => {
   const socialURLs = getSocialUrls(data)
   const menuBgColor = getMenuBgColor(data)
   const commContent = getCommContent(data)
+  const socialLogoUrls = getSocialLogosUrls(data)
   const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
@@ -73,7 +75,7 @@ const IndexPage = props => {
     <Layout>
       <Wrapper bgurl={backgroundURL}>
         <MenuBurger
-          bgColor={menuBgColor?menuBgColor.menu_bgcolor:'black'}
+          bgColor={menuBgColor ? menuBgColor.menu_bgcolor : 'black'}
           openOverlay={() => {
             setOpen(!open)
           }}
@@ -129,6 +131,7 @@ const IndexPage = props => {
           removeOverlay={() => setOpen(!open)}
           socialURLs={socialURLs}
           commContent={commContent}
+          socialLogoUrls={socialLogoUrls}
         />
       )}
 
@@ -225,11 +228,24 @@ export const pageQuery = graphql`
               instagram_url {
                 url
               }
+              whatsapp_url{
+                url
+              }
+              mail_url{
+                url
+              }
             }
           }
           ... on PrismicBlogpostBodyMenu {
             primary {
               menu_bgcolor
+            }
+          }
+          ... on PrismicBlogpostBodySociallogos {
+            primary {
+              linkedin {
+                url
+              }
             }
           }
           ... on PrismicBlogpostBodyCommunications {
