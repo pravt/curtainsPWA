@@ -7,12 +7,18 @@ const CurtainLogo = styled.input`
   width: 28%;
   cursor: default;
   outline:none;
+  top: 15%;
 
   @media (orientation: portrait) {
-    top: 2%;
-    left: 4%;
+    top: 5%;
+    left: 0%;
     position: absolute;
     width: 100%;
+  }
+  @media (orientation: landscape) {
+    top: 2%;
+    left: 19%;
+    position: absolute;
   }
 `;
 

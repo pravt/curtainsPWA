@@ -1,6 +1,7 @@
 import React from 'react'
 
 const MenuBurger = ({ bgColor, openOverlay }) => (
+    <div>
     <button
     className="hamburger hamburger--boring"
     type="button"
@@ -11,6 +12,7 @@ const MenuBurger = ({ bgColor, openOverlay }) => (
       <span className="hamburger-inner" />
     </span>
   </button>
+  </div>
 )
 
 export default MenuBurger
