@@ -16,7 +16,7 @@ import PdfCarousel from '../components/pdfCarousel'
 import Wrapper from '../components/wrapper'
 import Description from '../components/description'
 import DegreeOverlay from '../components/DegreeOverlay'
-import { getPDfDocuments, getEmbedVideoURL } from '../utils/index'
+import { getPDfDocuments, getEmbedVideoURL, getSocialUrls } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
 import '../socialIcons.css'
@@ -35,6 +35,7 @@ const IndexPage = props => {
   const { data } = props
   const pdfDocuments = getPDfDocuments(data)
   const videoHtml = getEmbedVideoURL(data)
+  const socialURLs = getSocialUrls(data)
   const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
@@ -88,12 +89,14 @@ const IndexPage = props => {
             onClick={() => setPdfOverlay(!openPdfOverlay)}
           />
         )}
-       {videoHtml &&  <Video
-          src={videoURL}
-          type="image"
-          value=""
-          onClick={() => setVideoOverlay(!openVideOverlay)}
-        />}
+        {videoHtml && (
+          <Video
+            src={videoURL}
+            type="image"
+            value=""
+            onClick={() => setVideoOverlay(!openVideOverlay)}
+          />
+        )}
         <Degree
           src={degreeIconURL}
           type="image"
@@ -120,6 +123,7 @@ const IndexPage = props => {
           wp={whatsappIconURL}
           email={emailIconURL}
           removeOverlay={() => setOpen(!open)}
+          socialURLs={socialURLs}
         />
       )}
 
@@ -129,7 +133,10 @@ const IndexPage = props => {
         />
       )}
       {openVideOverlay && (
-        <VideoOverlay embedVideoHtml={videoHtml} removeOverlay={() => setVideoOverlay(!openVideOverlay)} />
+        <VideoOverlay
+          embedVideoHtml={videoHtml}
+          removeOverlay={() => setVideoOverlay(!openVideOverlay)}
+        />
       )}
       {openPdfOverlay && (
         <PdfCarousel
@@ -199,6 +206,19 @@ export const pageQuery = graphql`
               embed_video_url {
                 embed_url
                 html
+              }
+            }
+          }
+          ... on PrismicBlogpostBodySocial {
+            primary {
+              facebook_url {
+                url
+              }
+              linkedin_url {
+                url
+              }
+              instagram_url {
+                url
               }
             }
           }

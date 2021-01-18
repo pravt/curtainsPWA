@@ -1,5 +1,6 @@
 const pdfBodyName = 'PrismicBlogpostBodyPdfslice';
 const embedVideoSliceName = 'PrismicBlogpostBodyVideoMapSlice';
+const socialSliceName = 'PrismicBlogpostBodySocial';
 
 export const getPDfDocuments = data => {
   let documents = data.prismicBlogpost.data.body
@@ -21,4 +22,11 @@ export const getEmbedVideoURL = data => {
     .filter(item => item['__typename'] === embedVideoSliceName)
     .map(i => i.primary)[0];
     return embedVideo && embedVideo.embed_video_url ? embedVideo.embed_video_url.html: null;
+}
+
+
+export const getSocialUrls = data => {
+  return data.prismicBlogpost.data.body
+  .filter(item => item['__typename'] === socialSliceName)
+  .map(i => i.primary)[0];
 }
