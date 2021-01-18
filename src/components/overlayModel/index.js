@@ -63,7 +63,9 @@ function OverlayModel({
             <a
               onClick={() => {
                 setOpen(false)
+                setContactOpen(false)
                 setShareOpen(!shareOpen)
+
               }}
             >
               Share
@@ -92,6 +94,7 @@ function OverlayModel({
             <a
               onClick={() => {
                 setShareOpen(false)
+                setContactOpen(false)
                 setOpen(!open)
               }}
             >
