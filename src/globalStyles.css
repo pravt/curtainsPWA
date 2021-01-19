@@ -2,13 +2,21 @@
     height: 100vh;
     display: flex;
     position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
+    
 }
 
+.body-bg-image{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.body-class{
+ padding: 0;
+ margin: 0;
+ height: 100vh;
+}
 .flex-item .align-top {
-    align-self: flex-start;
+    align-self: flex-end;
     left: 0; /* new */
     top: 0; /* new */
     position: absolute; /* new */

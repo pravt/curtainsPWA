@@ -13,16 +13,19 @@ import VideoOverlay from '../components/videoOverlay'
 import ThreeDOverlay from '../components/threeDOverlay'
 import PdfCarousel from '../components/pdfCarousel'
 import MenuBurger from '../components/menuBurger'
+import RightMenuBurger from '../components/rightMenuBurger'
 import Wrapper from '../components/wrapper'
 import Description from '../components/description'
 import DegreeOverlay from '../components/DegreeOverlay'
+import EmptyOverlayModel from '../components/emptyOverlayModel'
+
 import {
   getPDfDocuments,
   getEmbedVideoURL,
   getSocialUrls,
   getMenuBgColor,
   getCommContent,
-  getSocialLogosUrls
+  getSocialLogosUrls,
 } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
@@ -50,10 +53,10 @@ const IndexPage = props => {
   const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
-
+  const [showEmptyOverlay, setShowEmptyOverlay] = React.useState(false)
   const [openPdfOverlay, setPdfOverlay] = React.useState(false)
   const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false)
-
+  
   const items = data.prismicBlogpostBodyHeaderline.items[0]
   const backgroundURL = data.prismicBlogpost.data.background_image.url
   let logo_url = data.prismicBlogpost.data.logo_image.url
@@ -70,7 +73,6 @@ const IndexPage = props => {
   const videoURL = items.video_logo.url
   const prismicLogoURL = items.prismic_logo.url
   const modelUrl = data.prismicBlogpost.data.model_url.url
-
   return (
     <Layout>
       <Wrapper bgurl={backgroundURL}>
@@ -79,6 +81,12 @@ const IndexPage = props => {
           openOverlay={() => {
             setOpen(!open)
           }}
+        />
+        <RightMenuBurger
+           src={menuBgColor.menu_right_icon.url}
+           type="image"
+           value=""
+           onClick={() => {setShowEmptyOverlay(!showEmptyOverlay); }}
         />
         <CurtainLogo src={logo_url} type="image" />
         <Description desc={logoDescription} />
@@ -132,6 +140,12 @@ const IndexPage = props => {
           socialURLs={socialURLs}
           commContent={commContent}
           socialLogoUrls={socialLogoUrls}
+        />
+      )}
+
+      {showEmptyOverlay && (
+        <EmptyOverlayModel
+          removeOverlay={() => setShowEmptyOverlay(!showEmptyOverlay)} 
         />
       )}
 
@@ -228,10 +242,10 @@ export const pageQuery = graphql`
               instagram_url {
                 url
               }
-              whatsapp_url{
+              whatsapp_url {
                 url
               }
-              mail_url{
+              mail_url {
                 url
               }
             }
@@ -239,6 +253,10 @@ export const pageQuery = graphql`
           ... on PrismicBlogpostBodyMenu {
             primary {
               menu_bgcolor
+              menu_right_icon {
+                url
+                alt
+              }
             }
           }
           ... on PrismicBlogpostBodySociallogos {
