@@ -255,7 +255,6 @@ export const pageQuery = graphql`
               menu_bgcolor
               menu_right_icon {
                 url
-                alt
               }
             }
           }
