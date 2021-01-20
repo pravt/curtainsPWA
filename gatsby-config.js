@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `My Gatsby and Prismic blog`,
+    title: `Hotel brochure`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    author: `babusek`,
   },
   plugins: [
     `gatsby-plugin-sass`,

@@ -11,7 +11,7 @@ const globalStyle = css`
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    overflow-x: hidden;
   }
   ,
   div,
@@ -157,7 +157,12 @@ const Layout = ({ children }) => (
         name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
       />
-      <body className="body-class" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Hotel brochure" />
+      <meta property="og:image:width" content="250" />
+      <meta property="og:image:height" content="250" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:description" content="Hotel brochure" />
     </Helmet>
     <Global styles={globalStyle} />
 
