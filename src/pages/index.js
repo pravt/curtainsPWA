@@ -18,6 +18,7 @@ import Wrapper from '../components/wrapper'
 import Description from '../components/description'
 import DegreeOverlay from '../components/DegreeOverlay'
 import EmptyOverlayModel from '../components/emptyOverlayModel'
+import Metadata from "../components/metadata"
 
 import {
   getPDfDocuments,
@@ -77,6 +78,7 @@ const IndexPage = props => {
   const modelUrl = data.prismicBlogpost.data.model_url.url
   return (
     <Layout websiteMeta={websiteMeta}>
+    <Metadata title="Home" description="This is my home page" />
       <Wrapper bgurl={backgroundURL}>
         <MenuBurger
           bgColor={menuBgColor ? menuBgColor.menu_bgcolor : 'black'}
