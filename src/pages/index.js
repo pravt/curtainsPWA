@@ -77,8 +77,8 @@ const IndexPage = props => {
   const prismicLogoURL = items.prismic_logo.url
   const modelUrl = data.prismicBlogpost.data.model_url.url
   return (
-    <Layout websiteMeta={websiteMeta}>
-    <Metadata title="Home" description="This is my home page" />
+    <Layout>
+    <Metadata  websiteMeta={websiteMeta} title={websiteMeta.title.text} description="This is my home page" />
       <Wrapper bgurl={backgroundURL}>
         <MenuBurger
           bgColor={menuBgColor ? menuBgColor.menu_bgcolor : 'black'}

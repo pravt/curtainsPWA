@@ -152,17 +152,7 @@ const globalStyle = css`
 const Layout = ({ websiteMeta, children }) => (
   <>
     <Helmet>
-      <meta charSet="utf-8" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={websiteMeta.title.text} />
-      <meta property="og:image:width" content="250" />
-      <meta property="og:image:height" content="250" />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:description" content={websiteMeta.description.text} />
+      
     </Helmet>
     <Global styles={globalStyle} />
 
