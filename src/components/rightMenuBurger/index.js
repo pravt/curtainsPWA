@@ -13,7 +13,7 @@ const RightMenuBurger = styled.input`
     top: 0%;
     width: 12%;
     outline: none;
-    background-color: white;
+   
     border-radius: 40px;
     right: 1%;
     outline: none;
@@ -22,7 +22,7 @@ const RightMenuBurger = styled.input`
   @media (orientation: landscape) {
     top: 0%;
     outline: none;
-    background-color: white;
+   
     right: 1%;
   }
 

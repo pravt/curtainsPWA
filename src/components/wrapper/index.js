@@ -5,7 +5,7 @@ function Wrapper({ bgurl, children }) {
   return (
     <>
       <div className="container-fluid p-0">
-        <div className="d-flex flex-container" style={{backgroundImage: "url("+bgurl+")"}}>
+        <div className="d-flex flex-container body-bg-image" style={{backgroundImage: "url("+bgurl+")"}}>
           <div className="flex-item">{children}</div>
         </div>
       </div>

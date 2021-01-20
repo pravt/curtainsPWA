@@ -20,6 +20,9 @@ const CurtainLogo = styled.input`
     left: 19%;
     position: absolute;
   }
+
+  @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  }
 `;
 
 export default CurtainLogo;

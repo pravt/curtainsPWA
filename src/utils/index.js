@@ -4,6 +4,7 @@ const socialSliceName = 'PrismicBlogpostBodySocial';
 const menuSliceName = 'PrismicBlogpostBodyMenu';
 const commSliceName = 'PrismicBlogpostBodyCommunications';
 const socialLogosSliceName = 'PrismicBlogpostBodySociallogos';
+const websiteMeta = 'PrismicBlogpostBodyWebsitemeta';
 
 export const getPDfDocuments = data => {
   let documents = data.prismicBlogpost.data.body
@@ -53,3 +54,8 @@ export const getSocialLogosUrls = data => {
   .map(i => i.primary)[0];
 }
 
+export const getWebsiteMeta = data => {
+  return data.prismicBlogpost.data.body
+  .filter(item => item['__typename'] === websiteMeta)
+  .map(i => i.primary)[0];
+}

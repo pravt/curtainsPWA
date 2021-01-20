@@ -26,6 +26,7 @@ import {
   getMenuBgColor,
   getCommContent,
   getSocialLogosUrls,
+  getWebsiteMeta
 } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
@@ -50,13 +51,14 @@ const IndexPage = props => {
   const menuBgColor = getMenuBgColor(data)
   const commContent = getCommContent(data)
   const socialLogoUrls = getSocialLogosUrls(data)
+  const websiteMeta = getWebsiteMeta(data)
   const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
   const [showEmptyOverlay, setShowEmptyOverlay] = React.useState(false)
   const [openPdfOverlay, setPdfOverlay] = React.useState(false)
   const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false)
-  
+
   const items = data.prismicBlogpostBodyHeaderline.items[0]
   const backgroundURL = data.prismicBlogpost.data.background_image.url
   let logo_url = data.prismicBlogpost.data.logo_image.url
@@ -74,7 +76,7 @@ const IndexPage = props => {
   const prismicLogoURL = items.prismic_logo.url
   const modelUrl = data.prismicBlogpost.data.model_url.url
   return (
-    <Layout>
+    <Layout websiteMeta={websiteMeta}>
       <Wrapper bgurl={backgroundURL}>
         <MenuBurger
           bgColor={menuBgColor ? menuBgColor.menu_bgcolor : 'black'}
@@ -83,10 +85,13 @@ const IndexPage = props => {
           }}
         />
         <RightMenuBurger
-           src={menuBgColor.menu_right_icon.url}
-           type="image"
-           value=""
-           onClick={() => {setShowEmptyOverlay(!showEmptyOverlay); }}
+          src={menuBgColor.menu_right_icon.url}
+          type="image"
+          value=""
+          style={{backgroundColor: menuBgColor.menu_right_icon_color}}
+          onClick={() => {
+            setShowEmptyOverlay(!showEmptyOverlay)
+          }}
         />
         <CurtainLogo src={logo_url} type="image" />
         <Description desc={logoDescription} />
@@ -145,7 +150,7 @@ const IndexPage = props => {
 
       {showEmptyOverlay && (
         <EmptyOverlayModel
-          removeOverlay={() => setShowEmptyOverlay(!showEmptyOverlay)} 
+          removeOverlay={() => setShowEmptyOverlay(!showEmptyOverlay)}
         />
       )}
 
@@ -256,6 +261,10 @@ export const pageQuery = graphql`
               menu_right_icon {
                 url
               }
+              menu_right_icon {
+                url
+              }
+              menu_right_icon_color
             }
           }
           ... on PrismicBlogpostBodySociallogos {
@@ -277,6 +286,16 @@ export const pageQuery = graphql`
                 text
               }
               email_address {
+                text
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyWebsitemeta {
+            primary {
+              title {
+                text
+              }
+              description {
                 text
               }
             }

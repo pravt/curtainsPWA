@@ -107,10 +107,9 @@ div#iframe-wrapper iframe {
     position: absolute; /* Sit on top of the page content */
     display: flex; /* Hidden by default */
     height: 100vh; /* Full height (cover the whole page) */
-    top: 0;
+    top: 0%;
     left: 0;
     right: 0;
-    bottom: 0;
     color:#FFF;
     background-color: rgba(0,0,0,0.9); /* Black background with opacity */
     cursor: pointer; /* Add a pointer on hover */
@@ -129,7 +128,7 @@ div#iframe-wrapper iframe {
   .overlay nav {
     text-align: center;
     position: relative;
-    top: 50%;
+    top: 30%;
     height: 60%;
     transform: translateY(-50%);
     text-transform: uppercase;
