@@ -29,6 +29,7 @@ import {
   getCommContent,
   getSocialLogosUrls,
   getWebsiteMeta,
+  getShareLogUrls
 } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
@@ -54,6 +55,7 @@ const IndexPage = props => {
   const commContent = getCommContent(data)
   const socialLogoUrls = getSocialLogosUrls(data)
   const websiteMeta = getWebsiteMeta(data)
+ // const shareLogoUrls = getShareLogUrls(data)
   const [open, setOpen] = React.useState(false)
   const [openVideOverlay, setVideoOverlay] = React.useState(false)
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
@@ -150,6 +152,7 @@ const IndexPage = props => {
           socialURLs={socialURLs}
           commContent={commContent}
           socialLogoUrls={socialLogoUrls}
+        //  shareLogoUrls={shareLogoUrls}
         />
       )}
 
@@ -281,25 +284,28 @@ export const pageQuery = graphql`
           }
           ... on PrismicBlogpostBodyCommunications {
             primary {
-              map_url {
-                text
-              }
               phone_number {
-                text
-              }
-              website_url {
                 text
               }
               email_address {
                 text
               }
+              website_url {
+                text
+              }
+              map_url {
+                text
+              }
               phone_icon {
                 url
               }
-              location_icon {
+              email_icon {
                 url
               }
               webiste_icon {
+                url
+              }
+              location_icon {
                 url
               }
             }

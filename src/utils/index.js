@@ -5,6 +5,7 @@ const menuSliceName = 'PrismicBlogpostBodyMenu';
 const commSliceName = 'PrismicBlogpostBodyCommunications';
 const socialLogosSliceName = 'PrismicBlogpostBodySociallogos';
 const websiteMeta = 'PrismicBlogpostBodyWebsitemeta';
+const shareLogos = 'PrismicBlogpostBodyShareLogos';
 
 export const getPDfDocuments = data => {
   let documents = data.prismicBlogpost.data.body
@@ -59,3 +60,10 @@ export const getWebsiteMeta = data => {
   .filter(item => item['__typename'] === websiteMeta)
   .map(i => i.primary)[0];
 }
+
+export const getShareLogUrls = data => {
+  return data.prismicBlogpost.data.body
+  .filter(item => item['__typename'] === shareLogos)
+  .map(i => i.primary)[0];
+}
+

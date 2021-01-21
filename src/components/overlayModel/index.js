@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 function OverlayModel({
   removeOverlay,
   insta,
@@ -9,26 +8,41 @@ function OverlayModel({
   email,
   socialURLs,
   commContent,
-  socialLogoUrls
+  socialLogoUrls,
+  //shareLogoUrls
 }) {
-  
-  const { facebook_url, instagram_url, linkedin_url, whatsapp_url, mail_url } = socialURLs
-  const {linkedin}=socialLogoUrls
-  
-  
-  const fburl = facebook_url.url
-  const instaUrl = instagram_url.url;
-  const linkedUrl = linkedin_url.url;
-  const wu = whatsapp_url.url;
-  const murl = mail_url.url;
-  const whatsappUrl = wu.substring(wu.indexOf("whatsapp"), wu.length);
+  const {
+    facebook_url,
+    instagram_url,
+    linkedin_url,
+    whatsapp_url,
+    mail_url,
+  } = socialURLs
+  const { linkedin } = socialLogoUrls
 
-  const {map_url, phone_number,website_url, email_address, phone_icon, webiste_icon, location_icon }=commContent;
+  const fburl = facebook_url.url
+  const instaUrl = instagram_url.url
+  const linkedUrl = linkedin_url.url
+  const wu = whatsapp_url.url
+  const murl = mail_url.url
+  const whatsappUrl = wu.substring(wu.indexOf('whatsapp'), wu.length)
+ //const { linkedin_icon, whatsapp_icon } = shareLogoUrls;
+  const {
+    phone_number,
+    email_address,
+    website_url,
+    map_url,
+    phone_icon,
+    email_icon,
+    webiste_icon,
+    location_icon,
+  } = commContent
   const [open, setOpen] = React.useState(false)
   const [shareOpen, setShareOpen] = React.useState(false)
   const [contactOpen, setContactOpen] = React.useState(false)
-  const phoneNumber = phone_number.text;
- return (
+  const phoneNumber = phone_number.text
+
+  return (
     <div className="overlay">
       <button
         type="button"
@@ -38,28 +52,56 @@ function OverlayModel({
       <nav>
         <ul>
           <li>
-            <a  onClick={() => {
+            <a
+              onClick={() => {
                 setOpen(false)
                 setShareOpen(false)
                 setContactOpen(!contactOpen)
-              }}>Contact</a>
+              }}
+            >
+              Contact
+            </a>
             {contactOpen && (
               <ul className="socialUL">
-                <li className="grid-column">
-                  <img src={phone_icon.url} alt="wp"  className="contact-img" onClick={() => {
-                      window.location = "tel:"+phoneNumber;
-                    }}/> 
+                <li>
+                  <img
+                    src={phone_icon.url}
+                    alt="wp"
+                    className="contact-img"
+                    onClick={() => {
+                      window.location = 'tel:' + phoneNumber
+                    }}
+                  />
                 </li>
                 <li className="grid-column">
-                <img src={webiste_icon.url} alt="wp"  className="contact-img" onClick={() => {
-                      window.open('https://'+website_url.text, '_blank');
-                    }}/> 
-                  
+                  <img
+                    src={email_icon.url}
+                    alt="wp"
+                    className="contact-img"
+                    onClick={() => {
+                      window.location = 'mailto:' + email_address.text
+                    }}
+                  />
                 </li>
                 <li className="grid-column">
-                <img src={location_icon.url} alt="wp"  className="contact-img" onClick={() => {
-                      window.open(map_url.text, '_blank');
-                    }}/>
+                  <img
+                    src={webiste_icon.url}
+                    alt="wp"
+                    className="contact-img"
+                    onClick={() => {
+                      window.open("https://"+website_url.text, '_blank')
+                    }}
+                  />
+                </li>
+                <li className="grid-column">
+                  <img
+                    src={location_icon.url}
+                    alt="wp"
+                    className="contact-img"
+                    onClick={() => {
+                      window.open(map_url.text, '_blank')
+                    }}
+                  />
                 </li>
               </ul>
             )}
@@ -70,7 +112,6 @@ function OverlayModel({
                 setOpen(false)
                 setContactOpen(false)
                 setShareOpen(!shareOpen)
-
               }}
             >
               Share
@@ -108,14 +149,18 @@ function OverlayModel({
             {open && (
               <ul className="socialUL">
                 <li className="grid-column">
-                  <img src={insta} alt="insta" 
+                  <img
+                    src={insta}
+                    alt="insta"
                     onClick={() => {
                       window.location = instaUrl
                     }}
                   />
                 </li>
                 <li className="grid-column">
-                  <img src={linkedin.url} alt="linked" 
+                  <img
+                    src={linkedin.url}
+                    alt="linked"
                     onClick={() => {
                       window.location = linkedUrl
                     }}
