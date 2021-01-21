@@ -110,22 +110,18 @@ const IndexPage = props => {
           value=""
           onClick={() => setThreeDOverlay(!openthreeDOverlay)}
         />
-        {pdfDocuments.length > 0 && (
-          <PDFLogo
-            src={pdfLogoURL}
-            type="image"
-            value=""
-            onClick={() => setPdfOverlay(!openPdfOverlay)}
-          />
-        )}
-        {videoHtml && (
-          <Video
-            src={videoURL}
-            type="image"
-            value=""
-            onClick={() => setVideoOverlay(!openVideOverlay)}
-          />
-        )}
+        <PDFLogo
+          src={pdfLogoURL}
+          type="image"
+          value=""
+          onClick={() => setPdfOverlay(!openPdfOverlay)}
+        />
+        <Video
+          src={videoURL}
+          type="image"
+          value=""
+          onClick={() => setVideoOverlay(!openVideOverlay)}
+        />
         <Degree
           src={degreeIconURL}
           type="image"

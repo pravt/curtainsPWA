@@ -28,8 +28,7 @@ function OverlayModel({
   const [shareOpen, setShareOpen] = React.useState(false)
   const [contactOpen, setContactOpen] = React.useState(false)
   const phoneNumber = phone_number.text;
-  console.log(" map_url ",map_url , " website_url ", website_url)
-  return (
+ return (
     <div className="overlay">
       <button
         type="button"
