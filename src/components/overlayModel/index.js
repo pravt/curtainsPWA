@@ -23,10 +23,12 @@ function OverlayModel({
   const murl = mail_url.url;
   const whatsappUrl = wu.substring(wu.indexOf("whatsapp"), wu.length);
 
-  const {map_url, phone_number,website_url, email_address }=commContent;
+  const {map_url, phone_number,website_url, email_address, phone_icon, webiste_icon, location_icon }=commContent;
   const [open, setOpen] = React.useState(false)
   const [shareOpen, setShareOpen] = React.useState(false)
   const [contactOpen, setContactOpen] = React.useState(false)
+  const phoneNumber = phone_number.text;
+  console.log(" map_url ",map_url , " website_url ", website_url)
   return (
     <div className="overlay">
       <button
@@ -45,16 +47,20 @@ function OverlayModel({
             {contactOpen && (
               <ul className="contactUL">
                 <li className="grid-column">
-                  phone: {phone_number.text}
+                  <img src={phone_icon.url} alt="wp"  className="contact-img" onClick={() => {
+                      window.location = "tel:"+phoneNumber;
+                    }}/> 
                 </li>
                 <li className="grid-column">
-                  email: {email_address.text}
+                <img src={webiste_icon.url} alt="wp"  className="contact-img" onClick={() => {
+                      window.open('https://'+website_url.text, '_blank');
+                    }}/> 
+                  
                 </li>
                 <li className="grid-column">
-                  website:  {website_url.text}
-                </li>
-                <li className="grid-column">
-                   <a href={map_url.text}>location</a>
+                <img src={location_icon.url} alt="wp"  className="contact-img" onClick={() => {
+                      window.open(map_url.text, '_blank');
+                    }}/>
                 </li>
               </ul>
             )}

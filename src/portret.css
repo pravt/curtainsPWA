@@ -27,6 +27,12 @@
   top: 30%;
   text-align: center;width: 65%;
 }
+.rmenu-burger{
+    top: 0%;
+    outline: none;
+    right: 10%;
+    outline: none;
+}
 }
 @media (orientation: portrait) {
   .overlay{

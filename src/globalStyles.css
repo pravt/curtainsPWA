@@ -170,3 +170,9 @@ div#iframe-wrapper iframe {
     z-index: 100;
     cursor: pointer;
   }
+
+  .contact-img{
+    width: 5%;
+  }
+
+  

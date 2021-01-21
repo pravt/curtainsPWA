@@ -18,7 +18,8 @@ import Wrapper from '../components/wrapper'
 import Description from '../components/description'
 import DegreeOverlay from '../components/DegreeOverlay'
 import EmptyOverlayModel from '../components/emptyOverlayModel'
-import Metadata from "../components/metadata"
+import Metadata from '../components/metadata'
+import RMenuBurger from '../components/rmenuBurger'
 
 import {
   getPDfDocuments,
@@ -27,7 +28,7 @@ import {
   getMenuBgColor,
   getCommContent,
   getSocialLogosUrls,
-  getWebsiteMeta
+  getWebsiteMeta,
 } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
@@ -78,23 +79,29 @@ const IndexPage = props => {
   const modelUrl = data.prismicBlogpost.data.model_url.url
   return (
     <Layout>
-    <Metadata  websiteMeta={websiteMeta} title={websiteMeta.title.text} description="This is my home page" />
+      <Metadata
+        websiteMeta={websiteMeta}
+        title={websiteMeta.title.text}
+        description="This is my home page"
+      />
       <Wrapper bgurl={backgroundURL}>
-        <MenuBurger
-          bgColor={menuBgColor ? menuBgColor.menu_bgcolor : 'black'}
-          openOverlay={() => {
-            setOpen(!open)
-          }}
-        />
-        <RightMenuBurger
-          src={menuBgColor.menu_right_icon.url}
-          type="image"
-          value=""
-          style={{backgroundColor: menuBgColor.menu_right_icon_color}}
-          onClick={() => {
-            setShowEmptyOverlay(!showEmptyOverlay)
-          }}
-        />
+        {!open && (
+          <MenuBurger
+            bgColor={menuBgColor ? menuBgColor.menu_bgcolor : 'black'}
+            openOverlay={() => {
+              setOpen(!open)
+            }}
+          />
+        )}
+        {!showEmptyOverlay && !open && (
+          <RMenuBurger
+            bgColor={menuBgColor ? menuBgColor.menu_bgcolor : 'black'}
+            openOverlay={() => {
+              setShowEmptyOverlay(!showEmptyOverlay)
+            }}
+          />
+        )}
+
         <CurtainLogo src={logo_url} type="image" />
         <Description desc={logoDescription} />
         <ThreeD
@@ -289,6 +296,15 @@ export const pageQuery = graphql`
               }
               email_address {
                 text
+              }
+              phone_icon {
+                url
+              }
+              location_icon {
+                url
+              }
+              webiste_icon {
+                url
               }
             }
           }
