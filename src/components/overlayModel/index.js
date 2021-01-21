@@ -1,5 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import facebook_white from '../../icons/facebook_white.png'
+import linkedin_white from '../../icons/linkedin_white.png'
+import insta_white from '../../icons/insta_white.png'
+import whatsapp_white from '../../icons/whatsapp_white.png'
 function OverlayModel({
   removeOverlay,
   insta,
@@ -119,17 +123,17 @@ function OverlayModel({
             {shareOpen && (
               <ul className="socialUL">
                 <li className="grid-column">
-                  <img src={wp} alt="wp"  onClick={() => {
+                  <img src={whatsapp_white} alt="wp"  onClick={() => {
                       window.location = whatsappUrl
                     }}/> 
                 </li>
                 <li className="grid-column">
-                  <img src={email} alt="email" onClick={() => {
+                  <img  src={email_icon.url} alt="email" onClick={() => {
                       window.location = murl
                     }}/> 
                 </li>
                 <li className="grid-column">
-                  <img src={linkedin.url} alt="linked"  onClick={() => {
+                  <img src={linkedin_white} alt="linked"  onClick={() => {
                       window.location = linkedUrl
                     }}/>
                 </li>
@@ -150,7 +154,7 @@ function OverlayModel({
               <ul className="socialUL">
                 <li className="grid-column">
                   <img
-                    src={insta}
+                    src={insta_white}
                     alt="insta"
                     onClick={() => {
                       window.location = instaUrl
@@ -159,7 +163,7 @@ function OverlayModel({
                 </li>
                 <li className="grid-column">
                   <img
-                    src={linkedin.url}
+                    src={linkedin_white}
                     alt="linked"
                     onClick={() => {
                       window.location = linkedUrl
@@ -168,7 +172,7 @@ function OverlayModel({
                 </li>
                 <li className="grid-column">
                   <img
-                    src={fb}
+                    src={facebook_white}
                     alt="facebook"
                     onClick={() => {
                       window.location = fburl
