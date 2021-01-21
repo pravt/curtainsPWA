@@ -44,7 +44,7 @@ function OverlayModel({
                 setContactOpen(!contactOpen)
               }}>Contact</a>
             {contactOpen && (
-              <ul className="contactUL">
+              <ul className="socialUL">
                 <li className="grid-column">
                   <img src={phone_icon.url} alt="wp"  className="contact-img" onClick={() => {
                       window.location = "tel:"+phoneNumber;
