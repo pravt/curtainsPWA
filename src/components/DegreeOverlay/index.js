@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Iframe from "react-iframe";
 
-function DegreeOverlay({ removeOverlay, modelUrl }) {
+function DegreeOverlay({ removeOverlay, data }) {
   return (
     <div className="overlay">
      <button
@@ -14,7 +14,7 @@ function DegreeOverlay({ removeOverlay, modelUrl }) {
       </button>
      <div id="iframe-wrapper" className="iframe-wrapper">
       <Iframe
-        url={modelUrl}
+        url={data.three_sixty_degree_url.url}
         width="100%"
         height="100%"
         id="myId"

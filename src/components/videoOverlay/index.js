@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function VideoOverlay({ embedVideoHtml, removeOverlay }) {
+function VideoOverlay({ data, removeOverlay }) {
+  const videoHtml = data.video_url.html;
   return (
     <div className="overlay">
       <button
@@ -12,7 +13,7 @@ function VideoOverlay({ embedVideoHtml, removeOverlay }) {
         Close
       </button>
       <div id="iframe-wrapper" className="iframe-wrapper">
-      <div className= "iframe-video-div" dangerouslySetInnerHTML={{ __html: embedVideoHtml }} />
+      <div className= "iframe-video-div" dangerouslySetInnerHTML={{ __html: videoHtml }} />
        
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const Metadata = ({ websiteMeta,title, description }) => {
+const Metadata = ({ websiteMeta }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -15,8 +15,10 @@ const Metadata = ({ websiteMeta,title, description }) => {
       }
     `
   )
-  const metaTitle = title || data.site.siteMetadata.title
-  const metaDescription = description || data.site.siteMetadata.description
+  const titleText = websiteMeta.title.text;
+  const websiteDescription = websiteMeta.description.text;
+  const metaTitle = titleText || data.site.siteMetadata.title
+  const metaDescription = websiteDescription || data.site.siteMetadata.description
   return (
     <Helmet>
     <meta charSet="utf-8" />
@@ -26,12 +28,12 @@ const Metadata = ({ websiteMeta,title, description }) => {
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
       />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={websiteMeta.title.text} />
+      <meta property="og:title" content={titleText} />
       <meta property="og:image:width" content="250" />
       <meta property="og:image:height" content="250" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:description" content={websiteMeta.description.text} />
-      <title>{`${websiteMeta.title.text}`}</title>
+      <title>{`${titleText}`}</title>
       <title>{`${metaTitle} | ${data.site.siteMetadata.title}`}</title>
       <meta name="description" content={metaDescription} />
     </Helmet>
