@@ -60,12 +60,7 @@ const IndexPage = props => {
   const [showEmptyOverlay, setShowEmptyOverlay] = React.useState(false)
   const [openPdfOverlay, setPdfOverlay] = React.useState(false)
   const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false)
-  console.log(" videoMapSlice ",data)
- /* const backgroundURL = data.prismicBlogpost.data.website_background_image.url
-  let logo_url = data.prismicBlogpost.data.website_main_logo.url
-  logo_url = logo_url.substring(0, logo_url.indexOf('.png') + 4)
-  const footerLineURL = data.prismicBlogpost.data.footer_line.url
-  const logoDescription = data.prismicBlogpost.data.logo_description.text */
+  
  
   return (
     <Layout>
