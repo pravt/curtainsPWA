@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-
+import logo from '../../files/logo-87.png'
 const Metadata = ({ websiteMeta }) => {
   const data = useStaticQuery(
     graphql`
@@ -17,7 +17,8 @@ const Metadata = ({ websiteMeta }) => {
   )
   const titleText = websiteMeta.title.text;
   const websiteDescription = websiteMeta.description.text;
-  const metaTitle = titleText || data.site.siteMetadata.title
+  const linkShareImage = websiteMeta.meta_link_share_image?websiteMeta.meta_link_share_image.url:logo;
+  console.log(" ilnk share", linkShareImage);
   const metaDescription = websiteDescription || data.site.siteMetadata.description
   return (
     <Helmet>
@@ -28,13 +29,11 @@ const Metadata = ({ websiteMeta }) => {
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
       />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={titleText} />
-      <meta property="og:image:width" content="250" />
-      <meta property="og:image:height" content="250" />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:description" content={websiteMeta.description.text} />
       <title>{`${titleText}`}</title>
-      <title>{`${metaTitle} | ${data.site.siteMetadata.title}`}</title>
+      <meta property="og:title" content={titleText} />
+      <meta property="og:image" content={linkShareImage} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:locale" content="en_GB" />
       <meta name="description" content={metaDescription} />
     </Helmet>
   )

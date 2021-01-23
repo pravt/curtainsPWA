@@ -19,7 +19,7 @@ import EmptyOverlayModel from '../components/emptyOverlayModel'
 import Metadata from '../components/metadata'
 import LeftMenu from '../components/menu/leftMenu'
 import RightMenu from '../components/menu/rightMenu'
-
+import logo from '../files/prismic.png'
 import {
   getWebsiteHeaderData,
   getPDFSlice,
@@ -313,6 +313,9 @@ export const pageQuery = graphql`
               }
               description {
                 text
+              }
+              meta_link_share_image{
+                url
               }
             }
           }
