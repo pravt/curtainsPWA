@@ -34,6 +34,8 @@ const Metadata = ({ websiteMeta }) => {
       <meta property="og:image" content={linkShareImage} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:locale" content="en_GB" />
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:height" content="200" />
       <meta name="description" content={metaDescription} />
     </Helmet>
   )
