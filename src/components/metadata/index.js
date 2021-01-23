@@ -2,7 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import logo from '../../files/logo-87.png'
-const Metadata = ({ websiteMeta }) => {
+const Metadata = ({ websiteMeta, uid }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -15,10 +15,13 @@ const Metadata = ({ websiteMeta }) => {
       }
     `
   )
+  
+  const locationUrl = window.location.href;
+  console.log(locationUrl)
   const titleText = websiteMeta.title.text;
   const websiteDescription = websiteMeta.description.text;
   const linkShareImage = websiteMeta.meta_link_share_image?websiteMeta.meta_link_share_image.url:logo;
-  console.log(" ilnk share", linkShareImage);
+ 
   const metaDescription = websiteDescription || data.site.siteMetadata.description
   return (
     <Helmet>
@@ -34,8 +37,7 @@ const Metadata = ({ websiteMeta }) => {
       <meta property="og:image" content={linkShareImage} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:locale" content="en_GB" />
-      <meta property="og:image:width" content="300" />
-      <meta property="og:image:height" content="200" />
+      <meta property="og:url" content={locationUrl}/>
       <meta name="description" content={metaDescription} />
     </Helmet>
   )

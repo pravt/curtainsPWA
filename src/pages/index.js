@@ -60,12 +60,12 @@ const IndexPage = props => {
   const [showEmptyOverlay, setShowEmptyOverlay] = React.useState(false)
   const [openPdfOverlay, setPdfOverlay] = React.useState(false)
   const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false)
-  
+ 
  
   return (
     <Layout>
       <Metadata
-        websiteMeta={websiteMeta}
+        websiteMeta={websiteMeta} uid={data.prismicBlogpost.uid}
       />
       <Wrapper bgurl={websiteHeaderData.backgroundImage}>
         {!open && (
