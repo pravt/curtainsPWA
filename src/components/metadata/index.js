@@ -16,7 +16,7 @@ const Metadata = ({ websiteMeta, uid }) => {
     `
   )
   
-  const locationUrl = window.location.href;
+  const locationUrl = "https://smartdoq.netlify.app/"+uid;
   console.log(locationUrl)
   const titleText = websiteMeta.title.text;
   const websiteDescription = websiteMeta.description.text;
@@ -33,6 +33,7 @@ const Metadata = ({ websiteMeta, uid }) => {
       />
       <meta property="og:type" content="website" />
       <title>{`${titleText}`}</title>
+      <meta property="og:type" content="video.movie" />
       <meta property="og:title" content={titleText} />
       <meta property="og:image" content={linkShareImage} />
       <meta property="og:description" content={metaDescription} />
