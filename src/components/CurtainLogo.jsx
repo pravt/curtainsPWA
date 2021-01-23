@@ -8,17 +8,18 @@ const CurtainLogo = styled.input`
   top: 20%;
 
   @media (orientation: portrait) {
-    top: 10%;
-    left: 0%;
+    top: 8%;
+    left: 20%;
     position: absolute;
-    width: 100%;
+
   }
   
 
   @media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape) {
     top: 8%;
-    left: 15%;
+    left: 25%;
     position: absolute;
+    height:30%;
   }
 `;
 
