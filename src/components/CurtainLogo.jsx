@@ -5,11 +5,12 @@ const CurtainLogo = styled.input`
   position: absolute;
   cursor: default;
   outline:none;
-  top: 20%;
+  top: 15%;
+  height:30%;
 
   @media (orientation: portrait) {
-    top: 8%;
-    left: 20%;
+    top: 6%;
+    left: 8%;
     position: absolute;
 
   }
@@ -19,7 +20,7 @@ const CurtainLogo = styled.input`
     top: 8%;
     left: 25%;
     position: absolute;
-    height:30%;
+    height:35%;
   }
 `;
 
