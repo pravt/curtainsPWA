@@ -51,7 +51,7 @@ module.exports = {
         display: `standalone`,
         crossOrigin: `use-credentials`,
         cache_busting_mode: `none`,
-        icon: `favicons/tile70x70.png`,
+        icon: `favicons/tile310x310.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
