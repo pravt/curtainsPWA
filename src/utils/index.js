@@ -7,10 +7,10 @@ const websiteMeta = 'PrismicBlogpostBodyWebsitemeta'
 export const getWebsiteHeaderData = data => {
   const websiteData = data.prismicBlogpost.data
   let logoUrl = websiteData.website_main_logo.url;
-  logo_url = logo_url.substring(0, logo_url.indexOf('?auto'))
+  logoUrl = logoUrl.substring(0, logoUrl.indexOf('?auto'))
   return {
     backgroundImage: websiteData.website_background_image.url,
-    logoImage: logo_url,
+    logoImage: logoUrl,
     name: websiteData.name,
     logoDescription: websiteData.logo_description.text,
     footerLineImage: websiteData.footer_line_image.url,
