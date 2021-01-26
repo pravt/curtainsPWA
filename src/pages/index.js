@@ -27,7 +27,8 @@ import {
   getVideoMapSlice,
   getSocialUrls,
   getMenuData,
-  getWebsiteMeta
+  getWebsiteMeta,
+  amendMenuBGColor
 } from '../utils/index'
 import '../globalStyles.css'
 import '../portret.css'
@@ -72,7 +73,7 @@ const IndexPage = props => {
           <LeftMenu
           src={menuData.menu_left_icon.url}
           type="image"
-          style={{backgroundColor: menuData.menu_left_icon_bgcolor}}
+          style={{backgroundColor: amendMenuBGColor(menuData.menu_left_icon_bgcolor)}}
           onClick={() => setOpen(!open)}
         />
         )}
@@ -80,7 +81,7 @@ const IndexPage = props => {
           <RightMenu
           src={menuData.menu_right_icon.url}
           type="image"
-          style={{backgroundColor: menuData.menu_right_icon_bgcolor}}
+          style={{backgroundColor: amendMenuBGColor(menuData.menu_right_icon_bgcolor)}}
           onClick={() => setShowEmptyOverlay(!showEmptyOverlay)}
           ></RightMenu>
         )}

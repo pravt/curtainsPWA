@@ -63,3 +63,5 @@ export const getWebsiteMeta = data => {
     .filter(item => item['__typename'] === websiteMeta)
     .map(i => i.primary)[0]
 }
+
+export const amendMenuBGColor = ccode =>  ccode === '#FFFFFF'? 'none': ccode;
