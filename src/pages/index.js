@@ -19,7 +19,7 @@ import EmptyOverlayModel from '../components/emptyOverlayModel'
 import Metadata from '../components/metadata'
 import LeftMenu from '../components/menu/leftMenu'
 import RightMenu from '../components/menu/rightMenu'
-import logo from '../files/prismic.png'
+
 import {
   getWebsiteHeaderData,
   getPDFSlice,
@@ -72,6 +72,7 @@ const IndexPage = props => {
           <LeftMenu
           src={menuData.menu_left_icon.url}
           type="image"
+          style={{backgroundColor: menuData.menu_left_icon_bgcolor}}
           onClick={() => setOpen(!open)}
         />
         )}
@@ -79,27 +80,31 @@ const IndexPage = props => {
           <RightMenu
           src={menuData.menu_right_icon.url}
           type="image"
+          style={{backgroundColor: menuData.menu_right_icon_bgcolor}}
           onClick={() => setShowEmptyOverlay(!showEmptyOverlay)}
           ></RightMenu>
         )}
-        <CurtainLogo src={websiteHeaderData.logoImage} type="image" />
+        <CurtainLogo src={websiteHeaderData.logoImage} type="image" className="img-fluid"/>
         <Description desc={websiteHeaderData.logoDescription} />
         <ThreeD
           src={videoMapSlice.three_d_model_image.url}
           type="image"
           value=""
+          className="img-fluid"
           onClick={() => setThreeDOverlay(!openthreeDOverlay)}
         />
         <PDFLogo
           src={pdfSlice.pdf_image.url}
           type="image"
           value=""
+          className="img-fluid"
           onClick={() => setPdfOverlay(!openPdfOverlay)}
         />
         <Video
           src={videoMapSlice.video_image.url}
           type="image"
           value=""
+          className="img-fluid"
           onClick={() => setVideoOverlay(!openVideOverlay)}
         />
         {/* 360 degree which is not embed html*/}
@@ -107,10 +112,11 @@ const IndexPage = props => {
           src={videoMapSlice.three_sixty_degree_image.url}
           type="image"
           value=""
+          className="img-fluid"
           onClick={() => setOpenDegreeOverlay(!openDegreeOverlay)}
         />
-        <PrismicLogo src={websiteHeaderData.footerImage} type="image" value="" onclick="" />
-        <FooterLine src={websiteHeaderData.footerLineImage} />
+        <PrismicLogo src={websiteHeaderData.footerImage} type="image" value="" onclick="" className="img-fluid"/>
+        <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid"/>
       </Wrapper>
 
       {openDegreeOverlay && (
