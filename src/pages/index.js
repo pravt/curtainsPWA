@@ -90,25 +90,26 @@ const IndexPage = props => {
         )}
         <CurtainLogo src={websiteHeaderData.logoImage} type="image" className="img-fluid"/>
         <Description desc={websiteHeaderData.logoDescription} />
+        <div className="controlFlex">
         <ThreeD
           src={videoMapSlice.three_d_model_image.url}
           type="image"
           value=""
-          className="img-fluid"
+          className="img-fluid box"
           onClick={() => setThreeDOverlay(!openthreeDOverlay)}
         />
         <PDFLogo
           src={pdfSlice.pdf_image.url}
           type="image"
           value=""
-          className="img-fluid"
+          className="img-fluid box"
           onClick={() => setPdfOverlay(!openPdfOverlay)}
         />
         <Video
           src={videoMapSlice.video_image.url}
           type="image"
           value=""
-          className="img-fluid"
+          className="img-fluid box"
           onClick={() => setVideoOverlay(!openVideOverlay)}
         />
         {/* 360 degree which is not embed html*/}
@@ -116,9 +117,10 @@ const IndexPage = props => {
           src={videoMapSlice.three_sixty_degree_image.url}
           type="image"
           value=""
-          className="img-fluid"
+          className="img-fluid box"
           onClick={() => setOpenDegreeOverlay(!openDegreeOverlay)}
         />
+        </div>
         <PrismicLogo src={websiteHeaderData.footerImage} type="image" value="" onclick="" className="img-fluid"/>
         <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid"/>
       </Wrapper>
