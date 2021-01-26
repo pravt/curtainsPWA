@@ -2,18 +2,17 @@
 import styled from "styled-components";
 
 const Video = styled.input`
-  right: 11%;
-  top: 65%;
+  right: 14%;
+  top: 60%;
   position: absolute;
-  width: 32%;
+  width: 30%;
   outline: none;
 
   @media (orientation: portrait) {
-    top: 80%;
-    left: 28%;
+    top: 74%;
+    left: 24%;
     position: absolute;
     width: 52%;
-    outline: none;
     text-decoration: none;
   }
 `;

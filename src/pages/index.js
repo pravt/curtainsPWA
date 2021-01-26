@@ -38,11 +38,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const FooterLine = styled.img`
   left: 5%;
-  bottom: 10%;
+  bottom: 7%;
   width: 80%;
   height: 0.3%;
   position: absolute;
   outline: none;
+  @media (orientation: portrait) {
+    bottom: 10%;
+  }
 `
 
 const IndexPage = props => {
