@@ -201,8 +201,10 @@ div#iframe-wrapper iframe {
     width: 300px;
     margin: 5px;
   }
-  
-
+  .rightContainerFlex{
+    display: flex;
+    flex-direction: column;
+  }
   @media (orientation: portrait) {
     .controlFlex{
     top: 51%;
@@ -215,12 +217,14 @@ div#iframe-wrapper iframe {
       width: 200px;
     }
   }
-
-
   @media screen and (max-width: 812px) and (orientation: landscape) {
     .controlFlex{
       top: 12%;
       right: 10%;
+      }
+      .rightContainerFlex{
+        width: 220px;
+        top: 12%;
       }
   }
   
