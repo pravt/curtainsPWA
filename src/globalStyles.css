@@ -205,6 +205,18 @@ div#iframe-wrapper iframe {
     display: flex;
     flex-direction: column;
   }
+  .logoDescContainer{
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+  }
+
+ 
   @media (orientation: portrait) {
     .controlFlex{
     top: 51%;
@@ -216,6 +228,12 @@ div#iframe-wrapper iframe {
     .box{
       width: 200px;
     }
+    .logoDescContainer{
+      left: 0%;
+    }
+    .align-self{
+    text-align: center;
+    }
   }
   @media screen and (max-width: 812px) and (orientation: landscape) {
     .controlFlex{
@@ -225,6 +243,17 @@ div#iframe-wrapper iframe {
       .rightContainerFlex{
         width: 220px;
         top: 12%;
+      }
+      .logoDescContainer{
+        flex-direction: column;
+        right: 45%;
+        top: 12%;
+        left: 10%;;
+        width: 220px;
+      }
+      .align-self{
+      text-align:center;
+      width: 400px;
       }
   }
   

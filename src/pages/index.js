@@ -19,7 +19,7 @@ import EmptyOverlayModel from '../components/emptyOverlayModel'
 import Metadata from '../components/metadata'
 import LeftMenu from '../components/menu/leftMenu'
 import RightMenu from '../components/menu/rightMenu'
-
+import LogoDesc from '../components/LogoDesc'
 import {
   getWebsiteHeaderData,
   getPDFSlice,
@@ -88,9 +88,8 @@ const IndexPage = props => {
           onClick={() => setShowEmptyOverlay(!showEmptyOverlay)}
           ></RightMenu>
         )}
-        <CurtainLogo src={websiteHeaderData.logoImage} type="image" className="img-fluid"/>
-        <Description desc={websiteHeaderData.logoDescription} />
-        <div className="controlFlex">
+        <LogoDesc logo={websiteHeaderData.logoImage} desc={websiteHeaderData.logoDescription}/>
+         <div className="controlFlex">
         <ThreeD
           src={videoMapSlice.three_d_model_image.url}
           type="image"
