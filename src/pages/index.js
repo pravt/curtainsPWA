@@ -1,25 +1,25 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../components/layout/'
-import styled from 'styled-components'
-import CurtainLogo from '../components/CurtainLogo'
-import ThreeD from '../components/ThreeD'
-import PDFLogo from '../components/PDFLogo'
-import Video from '../components/Video'
-import Degree from '../components/Degree'
-import PrismicLogo from '../components/PrismicLogo'
-import OverlayModel from '../components/overlayModel'
-import VideoOverlay from '../components/videoOverlay'
-import ThreeDOverlay from '../components/threeDOverlay'
-import PdfCarousel from '../components/pdfCarousel'
-import Wrapper from '../components/wrapper'
-import Description from '../components/description'
-import DegreeOverlay from '../components/DegreeOverlay'
-import EmptyOverlayModel from '../components/emptyOverlayModel'
-import Metadata from '../components/metadata'
-import LeftMenu from '../components/menu/leftMenu'
-import RightMenu from '../components/menu/rightMenu'
-import LogoDesc from '../components/LogoDesc'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout/';
+import styled from 'styled-components';
+import CurtainLogo from '../components/CurtainLogo';
+import ThreeD from '../components/ThreeD';
+import PDFLogo from '../components/PDFLogo';
+import Video from '../components/Video';
+import Degree from '../components/Degree';
+import PrismicLogo from '../components/PrismicLogo';
+import OverlayModel from '../components/overlayModel';
+import VideoOverlay from '../components/videoOverlay';
+import ThreeDOverlay from '../components/threeDOverlay';
+import PdfCarousel from '../components/pdfCarousel';
+import Wrapper from '../components/wrapper';
+import Description from '../components/description';
+import DegreeOverlay from '../components/DegreeOverlay';
+import EmptyOverlayModel from '../components/emptyOverlayModel';
+import Metadata from '../components/metadata';
+import LeftMenu from '../components/menu/leftMenu';
+import RightMenu from '../components/menu/rightMenu';
+import LogoDesc from '../components/LogoDesc';
 import {
   getWebsiteHeaderData,
   getPDFSlice,
@@ -28,13 +28,15 @@ import {
   getSocialUrls,
   getMenuData,
   getWebsiteMeta,
-  amendMenuBGColor
-} from '../utils/index'
-import '../globalStyles.css'
-import '../portret.css'
-import '../socialIcons.css'
-import '../hamburgers.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+  amendMenuBGColor,
+  showRightMenu,
+  menuStyle
+} from '../utils/index';
+import '../globalStyles.css';
+import '../portret.css';
+import '../socialIcons.css';
+import '../hamburgers.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FooterLine = styled.img`
   left: 5%;
@@ -46,127 +48,103 @@ const FooterLine = styled.img`
   @media (orientation: portrait) {
     bottom: 10%;
   }
-`
+`;
+
 
 const IndexPage = props => {
-  const { data } = props
-  const websiteHeaderData = getWebsiteHeaderData(data)
-  const pdfSlice = getPDFSlice(data)
-  const  pdfDocuments = getPDFDocuments(data)
-  const videoMapSlice = getVideoMapSlice(data)
-  const socialURLs = getSocialUrls(data)
-  const menuData = getMenuData(data)
-  const websiteMeta = getWebsiteMeta(data)
+  const { data } = props;
+  const websiteHeaderData = getWebsiteHeaderData(data);
+  const pdfSlice = getPDFSlice(data);
+  const pdfDocuments = getPDFDocuments(data);
+  const videoMapSlice = getVideoMapSlice(data);
+  const socialURLs = getSocialUrls(data);
+  const menuData = getMenuData(data);
+  const websiteMeta = getWebsiteMeta(data);
 
-  const [open, setOpen] = React.useState(false)
-  const [openVideOverlay, setVideoOverlay] = React.useState(false)
-  const [openthreeDOverlay, setThreeDOverlay] = React.useState(false)
-  const [showEmptyOverlay, setShowEmptyOverlay] = React.useState(false)
-  const [openPdfOverlay, setPdfOverlay] = React.useState(false)
-  const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false)
- 
- 
+  const [open, setOpen] = React.useState(false);
+  const [openVideOverlay, setVideoOverlay] = React.useState(false);
+  const [openthreeDOverlay, setThreeDOverlay] = React.useState(false);
+  const [showEmptyOverlay, setShowEmptyOverlay] = React.useState(false);
+  const [openPdfOverlay, setPdfOverlay] = React.useState(false);
+  const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false);
+
   return (
     <Layout>
-      <Metadata
-        websiteMeta={websiteMeta} uid={data.prismicBlogpost.uid}
-      />
+      <Metadata websiteMeta={websiteMeta} uid={data.prismicBlogpost.uid} />
       <Wrapper bgurl={websiteHeaderData.backgroundImage}>
         {!open && (
           <LeftMenu
-          src={menuData.menu_left_icon.url}
-          type="image"
-          style={{backgroundColor: amendMenuBGColor(menuData.menu_left_icon_bgcolor)}}
-          onClick={() => setOpen(!open)}
-        />
+            src={menuData.menu_left_icon.url}
+            type="image"
+            style={menuStyle(menuData, 'left')}
+            onClick={() => setOpen(!open)}
+          />
         )}
-        {!showEmptyOverlay && !open && (
+        {showRightMenu(menuData) && !showEmptyOverlay && !open && (
           <RightMenu
-          src={menuData.menu_right_icon.url}
-          type="image"
-          style={{backgroundColor: amendMenuBGColor(menuData.menu_right_icon_bgcolor)}}
-          onClick={() => setShowEmptyOverlay(!showEmptyOverlay)}
-          ></RightMenu>
+            src={menuData.menu_right_icon.url}
+            type="image"
+            style={menuStyle(menuData, 'right')}
+            onClick={() => setShowEmptyOverlay(!showEmptyOverlay)}
+          />
         )}
-        <LogoDesc logo={websiteHeaderData.logoImage} desc={websiteHeaderData.logoDescription}/>
-         <div className="controlFlex">
-        <ThreeD
-          src={videoMapSlice.three_d_model_image.url}
-          type="image"
-          value=""
-          className="img-fluid box"
-          onClick={() => setThreeDOverlay(!openthreeDOverlay)}
-        />
-        <PDFLogo
-          src={pdfSlice.pdf_image.url}
-          type="image"
-          value=""
-          className="img-fluid box"
-          onClick={() => setPdfOverlay(!openPdfOverlay)}
-        />
-        <Video
-          src={videoMapSlice.video_image.url}
-          type="image"
-          value=""
-          className="img-fluid box"
-          onClick={() => setVideoOverlay(!openVideOverlay)}
-        />
-        {/* 360 degree which is not embed html*/}
-        <Degree
-          src={videoMapSlice.three_sixty_degree_image.url}
-          type="image"
-          value=""
-          className="img-fluid box"
-          onClick={() => setOpenDegreeOverlay(!openDegreeOverlay)}
-        />
+        <LogoDesc logo={websiteHeaderData.logoImage} desc={websiteHeaderData.logoDescription} />
+        <div className="controlFlex">
+          <ThreeD
+            src={videoMapSlice.three_d_model_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setThreeDOverlay(!openthreeDOverlay)}
+          />
+          <PDFLogo
+            src={pdfSlice.pdf_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setPdfOverlay(!openPdfOverlay)}
+          />
+          <Video
+            src={videoMapSlice.video_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setVideoOverlay(!openVideOverlay)}
+          />
+          {/* 360 degree which is not embed html*/}
+          <Degree
+            src={videoMapSlice.three_sixty_degree_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setOpenDegreeOverlay(!openDegreeOverlay)}
+          />
         </div>
-        <PrismicLogo src={websiteHeaderData.footerImage} type="image" value="" onclick="" className="img-fluid"/>
-        <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid"/>
+        <PrismicLogo src={websiteHeaderData.footerImage} type="image" value="" onclick="" className="img-fluid" />
+        <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid" />
       </Wrapper>
 
       {openDegreeOverlay && (
         <DegreeOverlay
           removeOverlay={() => {
-            setOpenDegreeOverlay(!openDegreeOverlay)
+            setOpenDegreeOverlay(!openDegreeOverlay);
           }}
           data={videoMapSlice}
         />
       )}
-      {open && (
-        <OverlayModel
-          removeOverlay={() => setOpen(!open)}
-          socialURLs={socialURLs}
-        />
-      )}
+      {open && <OverlayModel removeOverlay={() => setOpen(!open)} socialURLs={socialURLs} />}
 
-      {showEmptyOverlay && (
-        <EmptyOverlayModel
-          removeOverlay={() => setShowEmptyOverlay(!showEmptyOverlay)}
-        />
-      )}
+      {showEmptyOverlay && <EmptyOverlayModel menuData={menuData} removeOverlay={() => setShowEmptyOverlay(!showEmptyOverlay)} />}
 
       {openthreeDOverlay && (
-        <ThreeDOverlay
-          data={videoMapSlice}
-          removeOverlay={() => setThreeDOverlay(!openthreeDOverlay)}
-        />
+        <ThreeDOverlay data={videoMapSlice} removeOverlay={() => setThreeDOverlay(!openthreeDOverlay)} />
       )}
-      {openVideOverlay && (
-        <VideoOverlay
-          data={videoMapSlice}
-          removeOverlay={() => setVideoOverlay(!openVideOverlay)}
-        />
-      )}
-      {openPdfOverlay && (
-        <PdfCarousel
-          documents={pdfDocuments}
-          removeOverlay={() => setPdfOverlay(!openPdfOverlay)}
-        />
-      )}
+      {openVideOverlay && <VideoOverlay data={videoMapSlice} removeOverlay={() => setVideoOverlay(!openVideOverlay)} />}
+      {openPdfOverlay && <PdfCarousel documents={pdfDocuments} removeOverlay={() => setPdfOverlay(!openPdfOverlay)} />}
     </Layout>
-  )
-}
-export default IndexPage
+  );
+};
+export default IndexPage;
 
 export const pageQuery = graphql`
   query($uid: String) {
@@ -189,7 +167,7 @@ export const pageQuery = graphql`
           alt
           url
         }
-        footer_image{
+        footer_image {
           alt
           url
         }
@@ -212,8 +190,8 @@ export const pageQuery = graphql`
                 name
               }
               pdf_image {
-                  url
-                  alt
+                url
+                alt
               }
             }
           }
@@ -226,19 +204,19 @@ export const pageQuery = graphql`
                 url
                 alt
               }
-              video_url{
+              video_url {
                 embed_url
                 html
               }
               video_image {
-                  url
-                  alt
+                url
+                alt
               }
               three_d_model_image {
-                  url
-                  alt
+                url
+                alt
               }
-              three_d_model_embed_url{
+              three_d_model_embed_url {
                 html
                 embed_url
               }
@@ -246,13 +224,13 @@ export const pageQuery = graphql`
           }
           ... on PrismicBlogpostBodySocial {
             primary {
-            instagram_url {
+              instagram_url {
                 url
-            }
-            instagram_icon{
+              }
+              instagram_icon {
                 url
                 alt
-            }
+              }
               facebook_url {
                 url
               }
@@ -281,34 +259,53 @@ export const pageQuery = graphql`
                 url
               }
               phone_number {
-                  text
+                text
               }
               phone_icon {
-                  url
+                url
               }
-              location_url{
-                  url
+              location_url {
+                url
               }
               location_icon {
-                  url
+                url
               }
               website_url {
-                  url
+                url
               }
               website_icon {
-                  url
+                url
               }
             }
           }
           ... on PrismicBlogpostBodyMenu {
             primary {
+              show_right_menu
               menu_left_icon_bgcolor
               menu_left_icon {
                 url
               }
               menu_right_icon_bgcolor
-              menu_right_icon{
-                  url
+              menu_right_icon {
+                url
+              }
+              menu_right_image_url_1 {
+                url
+              }
+              menu_right_image_1 {
+                url
+              }
+              menu_right_image_url_2 {
+                url
+              }
+              menu_right_image_2 {
+                url
+              }
+              menu_right_image_url_3 {
+                url
+              }
+              menu_right_image_3 {
+                url
               }
             }
           }
@@ -320,7 +317,7 @@ export const pageQuery = graphql`
               description {
                 text
               }
-              meta_link_share_image{
+              meta_link_share_image {
                 url
               }
             }
@@ -329,4 +326,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

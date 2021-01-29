@@ -64,4 +64,22 @@ export const getWebsiteMeta = data => {
     .map(i => i.primary)[0]
 }
 
+export const showRightMenu = menuData => {
+  if(menuData.show_right_menu === null){
+    return true;
+  }else{
+    return menuData.show_right_menu;
+  }
+}
+
+export const menuStyle = (menuData, place)=>{
+  const bgColor = (place ==='left')? menuData.menu_left_icon_bgcolor: menuData.menu_right_icon_bgcolor;
+  const bgImageURL = (place ==='left')? menuData.menu_left_icon.url: menuData.menu_right_icon.url;
+  console.log("bgImageURL ",bgImageURL)
+  return { 
+        backgroundColor: amendMenuBGColor(bgColor), 
+        backgroundImage: getImageURL(bgImageURL)
+    }
+}
+export const getImageURL = (url) => url.substring(0, url.indexOf('?auto'))
 export const amendMenuBGColor = ccode =>  ccode === '#FFFFFF'? 'none': ccode;
