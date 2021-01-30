@@ -90,6 +90,7 @@ div#iframe-wrapper iframe {
     cursor: pointer; /* Add a pointer on hover */
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
   }
   
   .pdfViewer {
