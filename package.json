@@ -23,11 +23,13 @@
     "react": "^16.8.6",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^16.8.6",
+    "react-feather": "^2.0.9",
     "react-helmet": "^5.2.1",
     "react-iframe": "^1.8.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "feather-icons": "^4.28.0",
     "prettier": "^1.17.1"
   },
   "keywords": [

@@ -1,52 +1,78 @@
-import React from 'react'
-import { Carousel } from 'react-bootstrap'
-import pdfIcon from '../../files/pdficon.png'
-import PdfViewer from '../../components/pdfViewer'
-import face from '../../files/face.png';
-function PdfCarousel({ documents, removeOverlay }) {
-  const [open, setOpen] = React.useState(false)
-  const [activePdfUrl, setActivePdfUrl] = React.useState(undefined)
+import React from 'react';
+import * as Icon from 'react-feather';
+import PdfViewer from '../../components/pdfViewer';
+function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
+  const [open, setOpen] = React.useState(true);
+  const [activePdfUrl, setActivePdfUrl] = React.useState(undefined);
+  const [openPDFViewer, setOpenPDFViewer] = React.useState(false);
+  const [imageURL, setImageURL] = React.useState(pdfSlice.document_image_1.url);
+  const [imageIndex, setImageIndex] = React.useState(1);
+  const [documentURL, setDocumentURL] = React.useState(documents[0].url);
   return (
     <div className="overlay">
-      <button
-        type="button"
-        className="overlay-close"
-        onClick={e => removeOverlay()}
-      >
+      <button type="button" className="overlay-close" onClick={e => removeOverlay()}>
         Close
       </button>
-      {open && (
-        <PdfViewer fileURL={activePdfUrl} closePreview={() => setOpen(!open)} />
+      {openPDFViewer && (
+        <PdfViewer
+          fileURL={activePdfUrl}
+          closePreview={() => {
+            setOpenPDFViewer(false);
+            setOpen(true);
+          }}
+        />
       )}
-      <div className="pdf-flex">
-      <div className="pdf-flex-item">
-      <Carousel className={open ? 'hideCarousel' : ''} indicators={false}>
-        {documents.map(item => {
-          const {url, name} = item;
-          return (
-            <Carousel.Item key={name}>
-              <div className="carouselMiddle" key={name}>
-                <img
-                alt=""
-                  src={face}
-                  onClick={e => {
-                    setActivePdfUrl(url)
-                    setOpen(!open)
-                  }}
-                />
-              </div>
-            </Carousel.Item>
-          )
-        })}
-      </Carousel>
-      </div>
-      </div>
+      {open && (
+        <div>
+          <div className="pdf-flex-item">
+            <img
+              alt=""
+              src={imageURL}
+              onClick={e => {
+                setActivePdfUrl(documentURL);
+                setOpenPDFViewer(true);
+                setOpen(false);
+              }}
+            />
+          </div>
+          <div className="pdf-flex-bottom-item">
+            <Icon.ArrowLeftCircle
+              onClick={() => {
+                 if(imageIndex===1){
+                  setImageIndex(3);
+                }else
+                {
+                  setImageIndex(imageIndex - 1);
+                }
+                console.log(' url ', pdfSlice['document_image_' + `${imageIndex}`]['url']);
+                setImageURL(pdfSlice['document_image_' + `${imageIndex}`]['url']);
+                setDocumentURL(documents[imageIndex-1].url)
+              }}
+            />{' '}
+            <Icon.ArrowRightCircle
+              onClick={() => {
+                if(imageIndex===3){
+                  setImageIndex(1);
+                }else
+                {
+                  setImageIndex(imageIndex + 1);
+                }
+               
+                console.log(' url ', pdfSlice['document_image_' + `${imageIndex}`]['url']);
+                setImageURL(pdfSlice['document_image_' + `${imageIndex}`]['url']);
+                setDocumentURL(documents[imageIndex+1].url)
+              }}
+            />{' '}
+          </div>
+        </div>
+      )}
+      ;
     </div>
-  )
+  );
 }
 
-PdfCarousel.defaultProps = {}
+PdfCarousel.defaultProps = {};
 
-PdfCarousel.propTypes = {}
+PdfCarousel.propTypes = {};
 
-export default PdfCarousel
+export default PdfCarousel;

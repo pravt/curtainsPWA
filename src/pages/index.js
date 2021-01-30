@@ -120,8 +120,9 @@ const IndexPage = props => {
             onClick={() => setOpenDegreeOverlay(!openDegreeOverlay)}
           />
         </div>
-        <PrismicLogo src={websiteHeaderData.footerImage} type="image" value="" onclick="" className="img-fluid" />
-        <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid" />
+        <PrismicLogo src={websiteHeaderData.footerImage} type="image" value=""  onClick={()=>window.open(websiteHeaderData.footerLink)} className="img-fluid" />
+       {console.log("websiteHeaderData ",websiteHeaderData.footerLink)}
+        <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid"/>
       </Wrapper>
 
       {openDegreeOverlay && (
@@ -140,7 +141,7 @@ const IndexPage = props => {
         <ThreeDOverlay data={videoMapSlice} removeOverlay={() => setThreeDOverlay(!openthreeDOverlay)} />
       )}
       {openVideOverlay && <VideoOverlay data={videoMapSlice} removeOverlay={() => setVideoOverlay(!openVideOverlay)} />}
-      {openPdfOverlay && <PdfCarousel documents={pdfDocuments} removeOverlay={() => setPdfOverlay(!openPdfOverlay)} />}
+      {openPdfOverlay && <PdfCarousel pdfSlice={pdfSlice} documents={pdfDocuments} removeOverlay={() => setPdfOverlay(!openPdfOverlay)} />}
     </Layout>
   );
 };
@@ -171,12 +172,18 @@ export const pageQuery = graphql`
           alt
           url
         }
+        footer_image_url {
+          url
+        }
         logo_description {
           text
         }
         body {
           ... on PrismicBlogpostBodyPdfslice {
             primary {
+              pdf_image{
+                url
+              }
               document_1 {
                 url
                 name
@@ -189,9 +196,14 @@ export const pageQuery = graphql`
                 url
                 name
               }
-              pdf_image {
+              document_image_1{
                 url
-                alt
+              }
+              document_image_2{
+                url
+              }
+              document_image_3{
+                url
               }
             }
           }

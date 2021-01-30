@@ -235,11 +235,27 @@ div#iframe-wrapper iframe {
   .pdf-flex{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .pdf-flex-item{
     width: 500px;
     height: 500px;
-    
+  }
+
+  .pdf-flex-item img {
+    width: 500px;
+    height: 500px;
+  }
+
+  .pdf-flex-bottom-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+  .pdf-viewer-close{
+    background-color: black !important;
   }
   

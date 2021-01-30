@@ -5,7 +5,7 @@ const urlTorender = "https://drive.google.com/viewerng/viewer?embedded=true&url=
       <>
        <button
         type="button"
-        className="overlay-close"
+        className="overlay-close pdf-viewer-close"
         onClick={e => closePreview()}
       >
         Close

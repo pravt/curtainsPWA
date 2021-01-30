@@ -15,6 +15,7 @@ export const getWebsiteHeaderData = data => {
     logoDescription: websiteData.logo_description.text,
     footerLineImage: websiteData.footer_line_image.url,
     footerImage: websiteData.footer_image.url,
+    footerLink: websiteData.footer_image_url.url
   }
 }
 
@@ -75,8 +76,7 @@ export const showRightMenu = menuData => {
 export const menuStyle = (menuData, place)=>{
   const bgColor = (place ==='left')? menuData.menu_left_icon_bgcolor: menuData.menu_right_icon_bgcolor;
   const bgImageURL = (place ==='left')? menuData.menu_left_icon.url: menuData.menu_right_icon.url;
-  console.log("bgImageURL ",bgImageURL)
-  return { 
+ return { 
         backgroundColor: amendMenuBGColor(bgColor), 
         backgroundImage: getImageURL(bgImageURL)
     }

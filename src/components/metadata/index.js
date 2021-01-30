@@ -40,6 +40,8 @@ const Metadata = ({ websiteMeta, uid }) => {
       <meta property="og:locale" content="en_GB" />
       <meta property="og:url" content={locationUrl}/>
       <meta name="description" content={metaDescription} />
+      <script src="https://unpkg.com/feather-icons"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     </Helmet>
   )
 }
