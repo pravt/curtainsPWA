@@ -48,31 +48,6 @@ div#iframe-wrapper iframe {
 .hideCarousel {
   display: none;
 }
-.carousel {
-    position: absolute;
-    top: 45%;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    right: 100px;
-    width: 100%;
-}
-
-.carouselBottom {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
-    flex-wrap: wrap;
-    width: 10vh;
-}
-
-.carouselBottom img {
-}
-.carousel-item {
- left: 40%;
-}
 
 .overlay .pdfIframeContainer{
     display: flex;
@@ -102,7 +77,6 @@ div#iframe-wrapper iframe {
     height: 100% !important;
     width: 100% !important;
 }
-
 
 .overlay {
     position: absolute; /* Sit on top of the page content */
@@ -255,5 +229,16 @@ div#iframe-wrapper iframe {
       text-align:center;
       width: 400px;
       }
+  }
+
+  .pdf-flex{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pdf-flex-item{
+    width: 500px;
+    height: 500px;
+    
   }
   

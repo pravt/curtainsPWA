@@ -7,16 +7,6 @@
   body {
     margin: 0;
   }
-  .carousel-item {
-    left: 0% ;
-   }
-   .carousel{
-     width: 100%;
-   }
-   
-   .carouselBottom {
-    display: inline;
-}
 .description {
   position: absolute;
   color: white;
@@ -68,10 +58,7 @@
   top: 10%;
   margin: 0;
 }
-.carousel{
-  top: 70%;
-  height: 25vh;
-}
+
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
@@ -95,35 +82,14 @@
     border-radius: 20px;
     border: none;
   }
-  .carousel {
-    top: 70%;
-  }
-  .carouselBottom {
-    display: inline;
-}
+  
 
 } 
 
 @media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape) {
-  
-  .carouselBottom {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 30vh;
-    flex-wrap: wrap;
-    width: 10vh;
-    bottom: 10vh;
-}
 .pdfViewer{
   width: 67%;
   height: 63%;
   top: 5%;
-  
 }
-.carousel {
-  top: 45%
-}
-
 } 
