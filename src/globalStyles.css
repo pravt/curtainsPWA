@@ -55,7 +55,7 @@ div#iframe-wrapper iframe {
     align-items: center;
     vertical-align: middle;
     justify-content: center;
-    position: relative;
+    position: absolute;
     width: 100vh;
     height: 100%;
 }
