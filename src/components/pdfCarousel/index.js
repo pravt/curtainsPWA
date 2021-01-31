@@ -8,6 +8,8 @@ function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
   const [imageURL, setImageURL] = React.useState(pdfSlice.document_image_1.url);
   const [imageIndex, setImageIndex] = React.useState(1);
   const [documentURL, setDocumentURL] = React.useState(documents[0].url);
+  
+  console.log(noOfDocuments);
   return (
     <div className="overlay">
       <button type="button" className="overlay-close" onClick={e => removeOverlay()}>

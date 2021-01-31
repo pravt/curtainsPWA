@@ -8,6 +8,7 @@ export const getWebsiteHeaderData = data => {
   const websiteData = data.prismicBlogpost.data
   let logoUrl = websiteData.website_main_logo.url;
   logoUrl = logoUrl.substring(0, logoUrl.indexOf('?auto'))
+
   return {
     backgroundImage: websiteData.website_background_image.url,
     logoImage: logoUrl,
@@ -15,7 +16,7 @@ export const getWebsiteHeaderData = data => {
     logoDescription: websiteData.logo_description.text,
     footerLineImage: websiteData.footer_line_image.url,
     footerImage: websiteData.footer_image.url,
-    footerLink: websiteData.footer_image_url.url
+    footerLink: websiteData.footer_image_url?websiteData.footer_image_url.url:'none'
   }
 }
 
