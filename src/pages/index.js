@@ -121,7 +121,7 @@ const IndexPage = props => {
           />
         </div>
         <PrismicLogo src={websiteHeaderData.footerImage} type="image" value=""  onClick={()=>window.open(websiteHeaderData.footerLink)} className="img-fluid" />
-       {console.log("websiteHeaderData ",websiteHeaderData.footerLink)}
+       {console.log("pdfDocuments ",pdfDocuments)}
         <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid"/>
       </Wrapper>
 

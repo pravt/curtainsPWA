@@ -9,7 +9,10 @@ function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
   const [imageIndex, setImageIndex] = React.useState(1);
   const [documentURL, setDocumentURL] = React.useState(documents[0].url);
   let noOfDocuments = documents.length;
-
+  console.log(" pdfSlice:",pdfSlice);
+  console.log(" documents ",documents);
+  console.log(" noOfDocuments ",noOfDocuments);
+               
   return (
     <div className="overlay">
       <button type="button" className="overlay-close" onClick={e => removeOverlay()}>
@@ -37,7 +40,7 @@ function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
               }}
             />
           </div>
-          {noOfDocuments >1 &&
+          
           <div className="pdf-flex-bottom-item">
             <Icon.ArrowLeftCircle
               onClick={() => {
@@ -53,6 +56,7 @@ function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
             />
             <Icon.ArrowRightCircle
               onClick={() => {
+                console.log(" imageIndex ",imageIndex);
                 if(imageIndex===noOfDocuments){
                   setImageIndex(1);
                 }else
@@ -60,13 +64,12 @@ function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
                   setImageIndex(imageIndex + 1);
                 }
                 setImageURL(pdfSlice['document_image_' + `${imageIndex}`]['url']);
-                setDocumentURL(documents[imageIndex+1].url)
+                setDocumentURL(documents[imageIndex-1].url)
               }}
             />
-          </div>}
+          </div>
         </div> 
       )}
-      ;
     </div>
   );
 }
