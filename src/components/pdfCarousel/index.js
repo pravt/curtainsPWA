@@ -15,9 +15,10 @@ function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
                
   return (
     <div className="overlay">
-      <button type="button" className="overlay-close" onClick={e => removeOverlay()}>
+     {!openPDFViewer && <button type="button" className="overlay-close" onClick={e => removeOverlay()}>
         Close
       </button>
+     }
       {openPDFViewer && (
         <PdfViewer
           fileURL={activePdfUrl}
