@@ -38,10 +38,9 @@ export const getPDFDocuments = data => {
     .filter(item => item['__typename'] === pdfBodyName)
     .map(i => i.primary)[0]
   var result = []
-
   documents &&
     Object.keys(documents).map(k => {
-      if (documents[k].name && documents[k].name.indexOf('.pdf') > 0) {
+      if (documents[k] && documents[k].name && documents[k].name.indexOf('.pdf') > 0) {
         result.push(documents[k])
       }
     })

@@ -196,6 +196,14 @@ export const pageQuery = graphql`
                 url
                 name
               }
+              document_4 {
+                url
+                name
+              }
+              document_5 {
+                url
+                name
+              }
               document_image_1{
                 url
               }
@@ -203,6 +211,12 @@ export const pageQuery = graphql`
                 url
               }
               document_image_3{
+                url
+              }
+              document_image_4{
+                url
+              }
+              document_image_5{
                 url
               }
             }
