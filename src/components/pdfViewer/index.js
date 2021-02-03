@@ -10,7 +10,7 @@ const urlTorender = "https://drive.google.com/viewerng/viewer?embedded=true&url=
       >
         Close
       </button>
-      <iframe src={fileURL} style="width:1000px; height:800px;" frameborder="0" allowfullscreen></iframe>
+      <iframe src={fileURL} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
         </>
   )
 }
