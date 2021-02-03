@@ -1,10 +1,13 @@
 import React from 'react'
 function PdfViewer({ fileURL, closePreview }) {
 
-  var encodedUrl = encodeURIComponent(fileURL);
-  let googleDocsBaseURL = 'https://docs.google.com/viewer?url=';
+  //var encodedUrl = encodeURIComponent(fileURL);
+  //let googleDocsBaseURL = 'https://docs.google.com/viewer?url=';
 
-const pdfURL = googleDocsBaseURL +encodedUrl + '&embedded=true';
+  //console.log(" file url ",fileURL);
+
+//const pdfURL = googleDocsBaseURL +encodedUrl + '&embedded=true';
+//const u ="https://360host.me/brochure/Portfolio/v1.pdf"
   return (
       <>
        <button
@@ -14,7 +17,7 @@ const pdfURL = googleDocsBaseURL +encodedUrl + '&embedded=true';
       >
         Close
       </button>
-      <iframe title="image" src={pdfURL} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
+      <iframe title="image" src={fileURL} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
         </>
   )
 }
