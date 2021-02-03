@@ -1,6 +1,6 @@
 import React from 'react'
 function PdfViewer({ fileURL, closePreview }) {
-const urlTorender = "https://drive.google.com/viewerng/viewer?embedded=true&url="+fileURL;
+const urlTorender = "https://docs.google.com/gview?embedded=true&url="+fileURL;
   return (
       <>
        <button
@@ -10,7 +10,7 @@ const urlTorender = "https://drive.google.com/viewerng/viewer?embedded=true&url=
       >
         Close
       </button>
-      <iframe src={fileURL} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
+      <iframe src={urlTorender} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
         </>
   )
 }
