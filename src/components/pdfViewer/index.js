@@ -10,7 +10,7 @@ const urlTorender = "https://docs.google.com/gview?embedded=true&url="+fileURL;
       >
         Close
       </button>
-      <iframe src={urlTorender} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
+      <iframe title="image" src={urlTorender} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
         </>
   )
 }

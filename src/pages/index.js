@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout/';
 import styled from 'styled-components';
-import CurtainLogo from '../components/CurtainLogo';
 import ThreeD from '../components/ThreeD';
 import PDFLogo from '../components/PDFLogo';
 import Video from '../components/Video';
@@ -13,7 +12,6 @@ import VideoOverlay from '../components/videoOverlay';
 import ThreeDOverlay from '../components/threeDOverlay';
 import PdfCarousel from '../components/pdfCarousel';
 import Wrapper from '../components/wrapper';
-import Description from '../components/description';
 import DegreeOverlay from '../components/DegreeOverlay';
 import EmptyOverlayModel from '../components/emptyOverlayModel';
 import Metadata from '../components/metadata';
@@ -28,7 +26,6 @@ import {
   getSocialUrls,
   getMenuData,
   getWebsiteMeta,
-  amendMenuBGColor,
   showRightMenu,
   menuStyle
 } from '../utils/index';
@@ -121,7 +118,6 @@ const IndexPage = props => {
           />
         </div>
         <PrismicLogo src={websiteHeaderData.footerImage} type="image" value=""  onClick={()=>window.open(websiteHeaderData.footerLink)} className="img-fluid" />
-       {console.log("pdfDocuments ",pdfDocuments)}
         <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid"/>
       </Wrapper>
 
