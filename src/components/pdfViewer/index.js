@@ -10,9 +10,7 @@ const urlTorender = "https://drive.google.com/viewerng/viewer?embedded=true&url=
       >
         Close
       </button>
-        <div className="pdfIframeContainer">
-        <embed src={fileURL} width="100%" height="100%"/>
-        </div>
+      <iframe src={fileURL} style="width:1000px; height:800px;" frameborder="0" allowfullscreen></iframe>
         </>
   )
 }
