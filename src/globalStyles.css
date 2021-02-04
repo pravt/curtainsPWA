@@ -192,6 +192,11 @@ div#iframe-wrapper iframe {
     display: flex;
     flex-direction: column;
   }
+
+  .rightContainerFlex .box {
+    width: 300px;
+  }
+
   .logoDescContainer{
     display: flex;
     flex-direction: column;
@@ -231,12 +236,19 @@ div#iframe-wrapper iframe {
     .controlFlex .box {
         margin-top: -25px;
     }
+    .rightContainerFlex .box {
+      width: 150px;
+    }
   }
 
   @media screen and (max-width: 1024px) and (orientation: landscape) {
     #LogoDesc p span {
       font-size: 100% !important;
     }
+    .rightContainerFlex .box {
+      width: 150px;
+    }
+
   }
  
   /* @media (orientation: portrait) {
