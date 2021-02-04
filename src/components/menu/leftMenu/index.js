@@ -5,8 +5,14 @@ const LeftMenu = styled.input`
   top: 1%;
   position: absolute;
   outline: none;
-  height:55px;
-  width:55px;
+  width: 3%;
+
+  @media screen and (max-width: 800px) and (orientation: portrait) {
+    width: 10%;
+  }
+  @media screen and (max-width: 1024px) and (orientation: landscape) {
+    width: 8%;
+  }
 `;
 
 export default LeftMenu;
