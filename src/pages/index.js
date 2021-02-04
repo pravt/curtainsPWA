@@ -38,7 +38,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const FooterLine = styled.img`
   left: 5%;
   bottom: 7%;
-  width: 80%;
+  width: 90%;
   height: 0.3%;
   position: absolute;
   outline: none;
