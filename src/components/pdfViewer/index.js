@@ -1,41 +1,31 @@
-import React from 'react'
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile
-} from "react-device-detect";
+import React from 'react';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 function PdfViewer({ fileURL, closePreview }) {
+    //var encodedUrl = encodeURIComponent(fileURL);
+    //let googleDocsBaseURL = 'https://docs.google.com/viewer?url=';
 
-  //var encodedUrl = encodeURIComponent(fileURL);
-  //let googleDocsBaseURL = 'https://docs.google.com/viewer?url=';
+    //console.log(" file url ",fileURL);
 
-  //console.log(" file url ",fileURL);
+    //const pdfURL = googleDocsBaseURL +encodedUrl + '&embedded=true';
+    //const u ="https://360host.me/brochure/Portfolio/v1.pdf"
+    if (isMobile) {
+        <div> This content is unavailable on mobile</div>;
+    }
+    return (
+        <>
+            <button type="button" className="overlay-close pdf-viewer-close" onClick={e => closePreview()}>
+                Close
+            </button>
 
-//const pdfURL = googleDocsBaseURL +encodedUrl + '&embedded=true';
-//const u ="https://360host.me/brochure/Portfolio/v1.pdf"
-  return (
-      <>
-       <button
-        type="button"
-        className="overlay-close pdf-viewer-close"
-        onClick={e => closePreview()}
-      >
-        Close
-      </button>
-      if(isMobile){
-         <div> This content is unavailable on mobile</div>
-      }else{
-      <div className="scroll-wrapper">
-      <iframe title="image" src={fileURL} frameBorder="0" allowFullScreen></iframe>
-      </div>
-      }
+            <div className="scroll-wrapper">
+                <iframe title="image" src={fileURL} frameBorder="0" allowFullScreen />
+            </div>
         </>
-  )
+    );
 }
 
-PdfViewer.defaultProps = {}
+PdfViewer.defaultProps = {};
 
-PdfViewer.propTypes = {}
+PdfViewer.propTypes = {};
 
-export default PdfViewer
+export default PdfViewer;
