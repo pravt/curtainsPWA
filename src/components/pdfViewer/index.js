@@ -1,4 +1,10 @@
 import React from 'react'
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 function PdfViewer({ fileURL, closePreview }) {
 
   //var encodedUrl = encodeURIComponent(fileURL);
@@ -17,9 +23,13 @@ function PdfViewer({ fileURL, closePreview }) {
       >
         Close
       </button>
+      if(isMobile){
+         <div> This content is unavailable on mobile</div>
+      }else{
       <div className="scroll-wrapper">
       <iframe title="image" src={fileURL} frameBorder="0" allowFullScreen></iframe>
       </div>
+      }
         </>
   )
 }
