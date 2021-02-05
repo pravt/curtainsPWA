@@ -283,4 +283,17 @@ div#iframe-wrapper iframe {
     margin: 0%;
   }
 
-  
+  .scroll-wrapper{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top:0;
+    bottom: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+  }
+
+  .scroll-wrapper iframe{
+    height: 1000px;
+    width: 100%;
+  }

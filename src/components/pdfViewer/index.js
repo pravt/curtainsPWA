@@ -17,7 +17,9 @@ function PdfViewer({ fileURL, closePreview }) {
       >
         Close
       </button>
-      <iframe title="image" src={fileURL} style={{width:"1000px", height:"800px"}} frameBorder="0" allowFullScreen></iframe>
+      <div className="scroll-wrapper">
+      <iframe title="image" src={fileURL} frameBorder="0" allowFullScreen></iframe>
+      </div>
         </>
   )
 }
