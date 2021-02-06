@@ -9,7 +9,7 @@ function PdfViewer({ fileURL, closePreview }) {
     //const pdfURL = googleDocsBaseURL +encodedUrl + '&embedded=true';
     //const u ="https://360host.me/brochure/Portfolio/v1.pdf"
     if (isMobile) {
-        <div> This content is unavailable on mobile</div>;
+        return (<div> This content is unavailable on mobile</div>);
     }
     return (
         <>
