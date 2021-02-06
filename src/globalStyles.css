@@ -81,7 +81,8 @@ div#iframe-wrapper iframe {
 .overlay {
     position: absolute; /* Sit on top of the page content */
     display: flex; /* Hidden by default */
-   flex-direction: column;
+    height: 100vh;
+    flex-direction: column;
     top: 0%;
     left: 0;
     right: 0;
