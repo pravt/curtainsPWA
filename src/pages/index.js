@@ -230,6 +230,9 @@ export const pageQuery = graphql`
                 embed_url
                 html
               }
+              image_video{
+                url
+              }
               video_image {
                 url
                 alt
@@ -241,6 +244,22 @@ export const pageQuery = graphql`
               three_d_model_embed_url {
                 html
                 embed_url
+              }
+              image_video_1{
+                url
+              }
+              video_url_1{
+                uri
+                embed_url
+                html
+              }
+              image_video_2{
+                url
+              }
+              video_url_2{
+                uri
+                embed_url
+                html
               }
             }
           }
