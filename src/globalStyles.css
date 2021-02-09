@@ -235,7 +235,9 @@ div#iframe-wrapper iframe {
   }
 
   .pdf-flex-item {
-    height: 225px;
+    width: 900px;
+    height: 600px;
+    position: relative;
   }
 
   .pdf-flex-bottom-item{
@@ -312,6 +314,11 @@ div#iframe-wrapper iframe {
     }
     .rightContainerFlex .box {
       width: 150px;
+    }
+
+    .pdf-flex-item {
+      width: 445px;
+      height: 225px;
     }
 
   }
