@@ -289,9 +289,6 @@ div#iframe-wrapper iframe {
       font-size: 100% !important;
     }
 
-    .controlFlex {
-      
-    }
     .controlFlex, .imageControlFlex {
       width: 100%;
       display: block;
