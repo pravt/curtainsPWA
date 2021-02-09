@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import * as Icon from 'react-feather';
 import PdfViewer from '../../components/pdfViewer';
 function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
-  const [data, setData] = useState({ open: false, index: 1, imageURL: undefined });
   const [open, setOpen] = React.useState(true);
   const [activePdfUrl, setActivePdfUrl] = React.useState(undefined);
   const [openPDFViewer, setOpenPDFViewer] = React.useState(false);

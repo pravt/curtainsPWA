@@ -120,11 +120,6 @@ function OverlayModel({
                       window.location = mail_url.url
                     }}/> 
                 </li>
-                <li className="grid-column">
-                  <img src={linked_in_icon.url} alt="linked"  onClick={() => {
-                      window.location = linkedin_url.url
-                    }}/>
-                </li>
               </ul>
             )}
           </li>
@@ -146,15 +141,6 @@ function OverlayModel({
                     alt="insta"
                     onClick={() => {
                       window.location = instagram_url.url
-                    }}
-                  />
-                </li>
-                <li className="grid-column">
-                  <img
-                    src={linked_in_icon.url}
-                    alt="linked"
-                    onClick={() => {
-                      window.location = linkedin_url.url
                     }}
                   />
                 </li>

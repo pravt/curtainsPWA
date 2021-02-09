@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Modal, Carousel} from 'react-bootstrap';
 
 function VideoOverlay({ data, removeOverlay }) {
+  console.log(" data ", data);
   const videoHtml = data.video_url.html;
   return (
     <div className="overlay">
@@ -12,11 +14,23 @@ function VideoOverlay({ data, removeOverlay }) {
       >
         Close
       </button>
-      <div id="iframe-wrapper" className="iframe-wrapper">
-      <div className= "iframe-video-div" dangerouslySetInnerHTML={{ __html: videoHtml }} />
-       
+
+      <Carousel className="videoCarousel">
+  <Carousel.Item>
+    <div  dangerouslySetInnerHTML={{ __html: videoHtml }} />
+  </Carousel.Item>
+  <Carousel.Item>
+  <div dangerouslySetInnerHTML={{ __html: data.video_url_1.html }} />
+  </Carousel.Item>
+  <Carousel.Item>
+  <div dangerouslySetInnerHTML={{ __html:  data.video_url_2.html }} />
+
+  </Carousel.Item>
+</Carousel>
+
+      {/* <div className= "iframe-video-div" dangerouslySetInnerHTML={{ __html: videoHtml }} />
+        */}
       </div>
-    </div>
   )
 }
 
