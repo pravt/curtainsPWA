@@ -2,7 +2,8 @@ import React from 'react';
 import { isMobile } from 'react-device-detect';
 function PdfViewer({ fileURL, closePreview }) {
     
-    /* if (isMobile) {
+    if (isMobile) {
+      console.log(" hiii ")
         let encodedUrl = encodeURIComponent(fileURL);
         let googleDocsBaseURL = 'https://docs.google.com/viewer?url=';
         const pdfURL = googleDocsBaseURL +encodedUrl + '&embedded=true';
@@ -13,7 +14,7 @@ function PdfViewer({ fileURL, closePreview }) {
                 </object>
             </div>
         );
-    } *///else{
+    }else{
 
         return (
             <>
@@ -26,7 +27,7 @@ function PdfViewer({ fileURL, closePreview }) {
                 </div>
             </>
         );      
-    //}
+    }
   
 }
 
