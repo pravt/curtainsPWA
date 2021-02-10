@@ -40,7 +40,7 @@ function PdfCarousel({ documents, removeOverlay, pdfSlice }) {
         />
       )}
       {open && (
-        <div>
+        <div class="pdf-container">
           <div className="pdf-flex-item">
             <img
               alt=""
