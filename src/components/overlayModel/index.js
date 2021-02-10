@@ -146,6 +146,15 @@ function OverlayModel({
                 </li>
                 <li className="grid-column">
                   <img
+                    src={linked_in_icon.url}
+                    alt="linked"
+                    onClick={() => {
+                      window.location = linkedin_url.url
+                    }}
+                  />
+                </li>
+                <li className="grid-column">
+                  <img
                     src={facebook_icon.url}
                     alt="facebook"
                     onClick={() => {
