@@ -253,9 +253,6 @@ export const pageQuery = graphql`
                 embed_url
                 html
               }
-              image_video_2{
-                url
-              }
               video_url_2{
                 uri
                 embed_url
@@ -322,11 +319,10 @@ export const pageQuery = graphql`
           ... on PrismicBlogpostBodyMenu {
             primary {
               show_right_menu
-              menu_left_icon_bgcolor
               menu_left_icon {
                 url
               }
-              menu_right_icon_bgcolor
+              menu_right_icon_bg_color
               menu_right_icon {
                 url
               }
