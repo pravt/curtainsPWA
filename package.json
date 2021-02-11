@@ -30,8 +30,7 @@
   },
   "devDependencies": {
     "feather-icons": "4.28.0",
-    "prettier": "1.17.1",
-    "react-device-detect": "1.15.0"
+    "prettier": "1.17.1"
   },
   "keywords": [
     "gatsby"

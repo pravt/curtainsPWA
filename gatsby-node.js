@@ -42,3 +42,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   console.log(`👌🏼 Done creating pages from Prismic!`)
 }
+
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /bad-module/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
+}
