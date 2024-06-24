@@ -1,41 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import {Modal, Carousel} from 'react-bootstrap';
 
-function VideoOverlay({ removeOverlay }) {
-  const { allPrismicBlogpostBodyVideoMapSlice } = useStaticQuery(
-    graphql`
-      query {
-        allPrismicBlogpostBodyVideoMapSlice {
-          edges {
-            node {
-              id
-              primary {
-                embed_video_url {
-                  provider_name
-                  provider_url
-                  title
-                  author_name
-                  author_url
-                  type
-                  height
-                  width
-                  version
-                  thumbnail_height
-                  thumbnail_width
-                  thumbnail_url
-                  html
-                  embed_url
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-
-  const embedVideo = allPrismicBlogpostBodyVideoMapSlice.edges[0].node.primary.embed_video_url;
+function VideoOverlay({ data, removeOverlay }) {
+  console.log(" data ", data);
+  const videoHtml = data.video_url.html;
   return (
     <div className="overlay">
       <button
@@ -45,19 +14,32 @@ function VideoOverlay({ removeOverlay }) {
       >
         Close
       </button>
-      <div id="iframe-wrapper" className="iframe-wrapper">
-      <div className= "iframe-video-div" dangerouslySetInnerHTML={{ __html: embedVideo.html }} />
-       
+
+      <Carousel className="videoCarousel">
+  <Carousel.Item>
+    <div  dangerouslySetInnerHTML={{ __html: videoHtml }} />
+  </Carousel.Item>
+  <Carousel.Item>
+  <div dangerouslySetInnerHTML={{ __html: data.video_url_1.html }} />
+  </Carousel.Item>
+  <Carousel.Item>
+  <div dangerouslySetInnerHTML={{ __html:  data.video_url_2.html }} />
+
+  </Carousel.Item>
+</Carousel>
+
+      {/* <div className= "iframe-video-div" dangerouslySetInnerHTML={{ __html: videoHtml }} />
+        */}
       </div>
-    </div>
   )
 }
 
 VideoOverlay.defaultProps = {
-  vlink: '',
+  embedVideoHtml: '',
 }
 
 VideoOverlay.propTypes = {
-  removeOverlay: PropTypes.func
+  removeOverlay: PropTypes.func,
+  embedVideoHtml: PropTypes.string
 }
 export default VideoOverlay

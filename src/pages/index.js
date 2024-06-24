@@ -1,360 +1,348 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../components/layout/'
-import styled from "styled-components"
-import CurtainLogo from "../components/CurtainLogo";
-import LogoDescription from "../components/LogoDescription";
-import ThreeD from "../components/ThreeD";
-import PDFLogo from "../components/PDFLogo";
-import Video from "../components/Video";
-import Degree from "../components/Degree";
-import PrismicLogo from "../components/PrismicLogo";
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout/';
+import styled from 'styled-components';
+import ThreeD from '../components/ThreeD';
+import PDFLogo from '../components/PDFLogo';
+import Video from '../components/Video';
+import Degree from '../components/Degree';
+import PrismicLogo from '../components/PrismicLogo';
 import OverlayModel from '../components/overlayModel';
 import VideoOverlay from '../components/videoOverlay';
 import ThreeDOverlay from '../components/threeDOverlay';
 import PdfCarousel from '../components/pdfCarousel';
-
 import Wrapper from '../components/wrapper';
-
-import "../globalStyles.css";
-import "../portret.css";
-import "../socialIcons.css";
-import "../hamburgers.css";
+import DegreeOverlay from '../components/DegreeOverlay';
+import EmptyOverlayModel from '../components/emptyOverlayModel';
+import Metadata from '../components/metadata';
+import LeftMenu from '../components/menu/leftMenu';
+import RightMenu from '../components/menu/rightMenu';
+import LogoDesc from '../components/LogoDesc';
+import {
+  getWebsiteHeaderData,
+  getPDFSlice,
+  getPDFDocuments,
+  getVideoMapSlice,
+  getSocialUrls,
+  getMenuData,
+  getWebsiteMeta,
+  showRightMenu,
+  menuStyle
+} from '../utils/index';
+import '../globalStyles.css';
+import '../portret.css';
+import '../socialIcons.css';
+import '../hamburgers.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-/*const Wrapper = styled.section`
-  position: relative;
-  background-size: cover;
-  height: 100vh;
-  background-image: url(${(props) => props.url});
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  @media (orientation: portrait) {
-    height: 100vh;
-    position: relative;
-    background-size: cover;
-    background-image: url(${(props) => props.url});
-    background-position: 50% 50%;
-  }
-`; */
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
-const ToplineImg = styled.img`
-  top: 10%;
-  right: 33%;
-  left: 32%;
-  width: 33%;
-  height: 0.3%;
-  position: absolute;
-  @media (orientation: portrait) {
-    top: 6%;
-    left: 32%;
-    right: 28%;
-    width: 31%;
-    height: 0.2%;
-    position: absolute;
-  }
-`;
-
-const TopLineR = styled.img`
-  top: 10%;
-  left: 5%;
-  width: 7%;
-  height: 0.3%;
-  position: absolute;
-  @media (orientation: portrait) {
-    top: 6%;
-    right: 8%;
-    width: 7%;
-    height: 0.2%;
-    position: absolute;
-  }
-`;
-
-const TopLineL = styled.img`
-  top: 10%;
-  right: 8%;
-  width: 7%;
-  height: 0.3%;
-  position: absolute;
-  @media (orientation: portrait) {
-    top: 6%;
-    right: 8%;
-    width: 7%;
-    height: 0.2%;
-    position: absolute;
-  }
-`;
-
-const LogoImg = styled.div`
-  left: 19%;
-  top: 30%;
-  position: absolute;
-  width: 29%;
-  height: 210px;
-  background-image: url(${(props) => props.url});
-  background-repeat: no-repeat;
-`;
-
-const LinkedInLogo = styled.input`
-  left: 20%;
-  font-family: Arial;
-  fontsize: 2.4vw;
-  color: black;
-  top: 7%;
-  height: 6%;
-  position: absolute;
-  src: url(${(props) => props.url});
-`;
 
 const FooterLine = styled.img`
   left: 5%;
-  bottom: 10%;
-  width: 80%;
+  bottom: 7%;
+  width: 90%;
   height: 0.3%;
   position: absolute;
-`;
-
-const Paragraph = styled.p`
-  top: 5.1%;
-  left: ${(props) => props.lvalue};
-  right: ${(props) => props.rvalue};
-  position: absolute;
-  height: 4%;
-  color: white;
-  font-size: 1.7em;
-  font-weight: bold;
-`;
-
-const MenuTrigger = styled.input`
-  text-decoration: none;
-  font-size: 0.9em;
   outline: none;
-  color: #f7f7f7;
-  height: 40px;
-  position: relative;
-  width: 40px;
-  &:before {
-    position: absolute;
-    top: 10px;
-    left: 2;
-    width: 40px;
-    height: 6px;
-    background: #fff;
-    box-shadow: 0 6px #34495e, 0 12px #fff, 0 18px #34495e, 0 24px #fff;
-    content: "";
+  @media (orientation: portrait) {
+    bottom: 10%;
   }
 `;
+
+
 const IndexPage = props => {
   const { data } = props;
-  const [open, setOpen] = React.useState(false);
+  const websiteHeaderData = getWebsiteHeaderData(data);
+  const pdfSlice = getPDFSlice(data);
+  const pdfDocuments = getPDFDocuments(data);
+  const videoMapSlice = getVideoMapSlice(data);
+  const socialURLs = getSocialUrls(data);
+  const menuData = getMenuData(data);
+  const websiteMeta = getWebsiteMeta(data);
 
+  const [open, setOpen] = React.useState(false);
   const [openVideOverlay, setVideoOverlay] = React.useState(false);
   const [openthreeDOverlay, setThreeDOverlay] = React.useState(false);
-
+  const [showEmptyOverlay, setShowEmptyOverlay] = React.useState(false);
   const [openPdfOverlay, setPdfOverlay] = React.useState(false);
+  const [openDegreeOverlay, setOpenDegreeOverlay] = React.useState(false);
 
-  const items = data.prismicBlogpostBodyHeaderline.items[0];
-  const { url } = data.prismicBlogpost.data.topline;
-  const backgroundURL = data.prismicBlogpost.data.background_image.url;
-  let logo_url = data.prismicBlogpost.data.logo_image.url;
-  const linkedInURL =
-    data.prismicBlogpostBodyHeaderline.items[0].social_linkedin_logo.url;
-  logo_url = logo_url.substring(0, logo_url.indexOf(".png") + 4);
-  const footerLineURL = data.prismicBlogpost.data.footer_line.url;
-  const logoDescription = data.prismicBlogpost.data.logo_description.text;
-  const emailIconURL = items.email.url;
-  const whatsappIconURL = items.whatsapp.url;
-  const fbIconURL = items.facebook_logo.url;
-  const instaIconURL = items.instagram_logo.url;
-  const degreeIconURL = items._360_logo.url;
-  const threeModelLogo = items._3d_model_logo.url;
-  const pdfLogoURL = items.pdf_logo.url;
-  const videoURL = items.video_logo.url;
-  const prismicLogoURL = items.prismic_logo.url;
-  const watchvideolink = items.watchvideolink.url;
-  const _3dmodelURL = items._3dmodellink.url;
-  const pdfDocLink = items.pdflink.url;
-  const whastsappchatlink = items.whastsappchatlink.url;
-  const mailtolink = items.mailtolink.url;
-  const headerRightTitle =
-    data.prismicBlogpostBodyHeaderline.primary.header_right_title.text;
-  const headerLeftTitle =
-    data.prismicBlogpostBodyHeaderline.primary.header_left_title.text;
-  return(
+  return (
     <Layout>
-     <Wrapper bgurl={backgroundURL}>
-     <button className="hamburger hamburger--boring" type="button" onClick={() => setOpen(!open)}>
-       <span className="hamburger-box">
-         <span className="hamburger-inner"></span>
-       </span>
-     </button>
-     <CurtainLogo src={logo_url} type="image" />
-     <LogoDescription>{logoDescription} </LogoDescription>
-     <ThreeD
-       src={threeModelLogo}
-       type="image"
-       value=""
-       onClick={() => setThreeDOverlay(!openthreeDOverlay)}
-     />
-     <PDFLogo
-       src={pdfLogoURL}
-       type="image"
-       value=""
-       onClick={() => setPdfOverlay(!openPdfOverlay)}
-     />
-     <Video
-       src={videoURL}
-       type="image"
-       value=""
-       onClick={() => setVideoOverlay(!openVideOverlay)}
-     />
-     <Degree src={degreeIconURL} type="image" value="" onclick="" />
-     <PrismicLogo src={prismicLogoURL} type="image" value="" onclick="" />
-     <FooterLine src={footerLineURL} />
-   </Wrapper>
+      <Metadata websiteMeta={websiteMeta} uid={data.prismicBlogpost.uid} />
+      <Wrapper bgurl={websiteHeaderData.backgroundImage}>
+        {!open && (
+          <LeftMenu
+            src={menuData.menu_left_icon.url}
+            type="image"
+            style={menuStyle(menuData, 'left')}
+            onClick={() => setOpen(!open)}
+          />
+        )}
+        {showRightMenu(menuData) && !showEmptyOverlay && !open && (
+          <RightMenu
+            src={menuData.menu_right_icon.url}
+            type="image"
+            style={menuStyle(menuData, 'right')}
+            onClick={() => setShowEmptyOverlay(!showEmptyOverlay)}
+          />
+        )}
+        <LogoDesc logo={websiteHeaderData.logoImage} desc={websiteHeaderData.logoDescription} />
+        <div className="controlFlex">
+          <ThreeD
+            src={videoMapSlice.three_d_model_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setThreeDOverlay(!openthreeDOverlay)}
+          />
+          <PDFLogo
+            src={pdfSlice.pdf_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setPdfOverlay(!openPdfOverlay)}
+          />
+          <Video
+            src={videoMapSlice.video_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setVideoOverlay(!openVideOverlay)}
+          />
+          {/* 360 degree which is not embed html*/}
+          <Degree
+            src={videoMapSlice.three_sixty_degree_image.url}
+            type="image"
+            value=""
+            className="img-fluid box"
+            onClick={() => setOpenDegreeOverlay(!openDegreeOverlay)}
+          />
+        </div>
+        <PrismicLogo src={websiteHeaderData.footerImage} type="image" value=""  onClick={()=>window.open(websiteHeaderData.footerLink)} className="img-fluid" />
+        <FooterLine src={websiteHeaderData.footerLineImage} className="img-fluid"/>
+      </Wrapper>
 
-   {open && (
-     <OverlayModel
-       insta={instaIconURL}
-       linked={linkedInURL}
-       fb={fbIconURL}
-       wp={whatsappIconURL}
-       email={emailIconURL}
-       removeOverlay={() => setOpen(!open)}
-     />
-   )}
-  
-   {openthreeDOverlay && (
-     <ThreeDOverlay
-       removeOverlay={() => setThreeDOverlay(!openthreeDOverlay)}
-     />
-   )}
-   {openVideOverlay && (
-     <VideoOverlay
-       removeOverlay={() => setVideoOverlay(!openVideOverlay)}
-     />
-   )}
-   {openPdfOverlay && (
-     <PdfCarousel
-       removeOverlay={() => setPdfOverlay(!openPdfOverlay)}
-     />
-   )}
-    
+      {openDegreeOverlay && (
+        <DegreeOverlay
+          removeOverlay={() => {
+            setOpenDegreeOverlay(!openDegreeOverlay);
+          }}
+          data={videoMapSlice}
+        />
+      )}
+      {open && <OverlayModel removeOverlay={() => setOpen(!open)} socialURLs={socialURLs} />}
+
+      {showEmptyOverlay && <EmptyOverlayModel menuData={menuData} removeOverlay={() => setShowEmptyOverlay(!showEmptyOverlay)} />}
+
+      {openthreeDOverlay && (
+        <ThreeDOverlay data={videoMapSlice} removeOverlay={() => setThreeDOverlay(!openthreeDOverlay)} />
+      )}
+      {openVideOverlay && <VideoOverlay data={videoMapSlice} removeOverlay={() => setVideoOverlay(!openVideOverlay)} />}
+      {openPdfOverlay && <PdfCarousel pdfSlice={pdfSlice} documents={pdfDocuments} removeOverlay={() => setPdfOverlay(!openPdfOverlay)} />}
     </Layout>
-   )
-}
-export default IndexPage
+  );
+};
+export default IndexPage;
 
 export const pageQuery = graphql`
-  query {
-    prismicBlogpost {
+  query($uid: String) {
+    prismicBlogpost(uid: { eq: $uid }) {
+      uid
       data {
-        logo_image {
+        website_main_logo {
           alt
-          copyright
           url
         }
         name {
           html
           text
         }
-        topline {
+        website_background_image {
           alt
-          copyright
           url
         }
-        background_image {
+        footer_line_image {
           alt
-          copyright
           url
         }
-        footer_line {
+        footer_image {
           alt
-          copyright
+          url
+        }
+        footer_image_url {
           url
         }
         logo_description {
           text
         }
-      }
-    }
-    prismicBlogpostBodyHeaderline(items: {}) {
-      id
-      items {
-        social_linked_logo_text {
-          alt
-          copyright
-          url
-        }
-        social_linkedin_logo {
-          alt
-          copyright
-          url
-        }
-        email {
-          url
-        }
-        whatsapp {
-          url
-        }
-        facebook_logo {
-          url
-        }
-        instagram_logo {
-          url
-        }
-        _360_logo {
-          url
-        }
-        _3d_model_logo {
-          url
-        }
-        pdf_logo {
-          url
-        }
-        video_logo {
-          url
-        }
-        prismic_logo {
-          url
-        }
-        linkedinurl {
-          url
-        }
-        instalink {
-          url
-        }
-        facebookurl {
-          url
-        }
-        watchvideolink {
-          url
-        }
-        _3dmodellink {
-          url
-        }
-        pdflink {
-          url
-        }
-        mailtolink {
-          url
-        }
-        whastsappchatlink {
-          url
-        }
-      }
-      primary {
-        header_left_title {
-          html
-          text
-        }
-        header_right_title {
-          html
-          text
+        body {
+          ... on PrismicBlogpostBodyPdfslice {
+            primary {
+              pdf_image{
+                url
+              }
+              document_1 {
+                url
+                name
+              }
+              document_2 {
+                url
+                name
+              }
+              document_3 {
+                url
+                name
+              }
+              document_image_1{
+                url
+              }
+              document_image_2{
+                url
+              }
+              document_image_3{
+                url
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyVideoMapSlice {
+            primary {
+              three_sixty_degree_url {
+                url
+              }
+              three_sixty_degree_image {
+                url
+                alt
+              }
+              video_url {
+                embed_url
+                html
+              }
+              image_video{
+                url
+              }
+              video_image {
+                url
+                alt
+              }
+              three_d_model_image {
+                url
+                alt
+              }
+              three_d_model_embed_url {
+                html
+                embed_url
+              }
+              image_video_1{
+                url
+              }
+              video_url_1{
+                embed_url
+                html
+              }
+              video_url_2{
+                embed_url
+                html
+              }
+            }
+          }
+          ... on PrismicBlogpostBodySocial {
+            primary {
+              instagram_url {
+                url
+              }
+              instagram_icon {
+                url
+                alt
+              }
+              facebook_url {
+                url
+              }
+              facebook_icon {
+                url
+                alt
+              }
+              linkedin_url {
+                url
+              }
+              linked_in_icon {
+                url
+                alt
+              }
+              whatsapp_url {
+                url
+              }
+              whatsapp_icon {
+                url
+                alt
+              }
+              mail_url {
+                url
+              }
+              mail_icon {
+                url
+              }
+              phone_number {
+                text
+              }
+              phone_icon {
+                url
+              }
+              location_url {
+                url
+              }
+              location_icon {
+                url
+              }
+              website_url {
+                url
+              }
+              website_icon {
+                url
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyMenu {
+            primary {
+              show_right_menu
+              menu_left_icon {
+                url
+              }
+              menu_right_icon_bg_color
+              menu_right_icon {
+                url
+              }
+              menu_right_image_url_1 {
+                url
+              }
+              menu_right_image_1 {
+                url
+              }
+              menu_right_image_url_2 {
+                url
+              }
+              menu_right_image_2 {
+                url
+              }
+              menu_right_image_url_3 {
+                url
+              }
+              menu_right_image_3 {
+                url
+              }
+            }
+          }
+          ... on PrismicBlogpostBodyWebsitemeta {
+            primary {
+              title {
+                text
+              }
+              description {
+                text
+              }
+              meta_link_share_image {
+                url
+              }
+            }
+          }
         }
       }
     }

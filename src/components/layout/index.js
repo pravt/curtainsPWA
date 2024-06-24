@@ -1,13 +1,19 @@
 import { css, Global } from '@emotion/react'
+import { Helmet } from 'react-helmet'
 import React from 'react'
-import Helmet from 'react-helmet'
 
 const globalStyle = css`
   html,
-  body{
+  body {
     padding: 0;
     margin: 0;
-  },
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+  }
+  ,
   div,
   span,
   applet,
@@ -136,14 +142,20 @@ const globalStyle = css`
   textarea {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, Cantarell, Roboto, Helvetica, Arial, Noto Sans,
-      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu,
+      Cantarell, Roboto, Helvetica, Arial, Noto Sans, sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
   }
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ websiteMeta, children }) => (
   <>
+    <Helmet>
+      
+    </Helmet>
     <Global styles={globalStyle} />
+
     {children}
   </>
 )

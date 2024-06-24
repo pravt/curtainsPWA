@@ -6,7 +6,7 @@
  * @link https://github.com/jonsuh/hamburgers
  */
  .hamburger {
-    padding: 15px 15px;
+    padding: 5px 5px;
     display: inline-block;
     cursor: pointer;
     transition-property: opacity, filter;
@@ -705,3 +705,11 @@
     .hamburger--vortex-r.is-active .hamburger-inner::after {
       bottom: 0;
       transform: rotate(-90deg); }
+
+      .rmenu-burger {
+        right: 0%;
+  top: 0%;
+  position: absolute;
+  outline: none;
+  background-color: black;
+      }

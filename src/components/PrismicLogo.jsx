@@ -1,17 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 
 const PrismicLogo = styled.input`
-  right: 8%;
-  bottom: 6%;
+  right: 5%;
+  bottom: 8%;
   position: absolute;
-  width: 4%;
+  width: 10%;
   cursor: default;
-  @media (orientation: portrait) {
-    right: 47%;
-    bottom: 6%;
-    position: absolute;
-    width: 5%;
+  outline: none;
+  @media screen and (max-width: 800px) and (orientation: portrait) {
+    width: 15%;
   }
 `;
 

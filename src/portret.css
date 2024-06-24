@@ -7,33 +7,40 @@
   body {
     margin: 0;
   }
-  .carousel-item {
-    left: 0% ;
-   }
-   .carousel{
-     width: 100%;
-   }
-   
-   .carouselBottom {
-    display: inline;
+.description {
+  position: absolute;
+  color: white;
+  background: transparent;
+  font-size: 1em;
+  letter-spacing: 0px;
+  left: 18%;
+  top: 30%;
+  text-align: center;width: 65%;
+}
+.rmenu-burger{
+    top: 0%;
+    outline: none;
+    right: 10%;
+    outline: none;
 }
 }
 @media (orientation: portrait) {
   .overlay{
+    display: flex;
   position: absolute; /* Sit on top of the page content */
-  display: block; /* Hidden by default */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
+  height: 100vh; /* Full height (cover the whole page) */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   text-align: center;
   align-items: center;
+  justify-content: center;
   color: #FFF;
   background-color: rgba(0,0,0,0.9); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
+  overflow-y: hidden;
   }
 
 .overlay nav {
@@ -43,19 +50,21 @@
   padding: 0;
   margin: 0;
 }
-.pdfViewer {
-  background-color: black;
-  width: 65%;
-  height: 50%;
-  left: 18%;
-  position: absolute;
-  top: 10%;
-  margin: 0;
+
+.pdf-flex{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.carousel{
-  top: 70%;
-  height: 25vh;
+/* .pdf-flex-item{
+  width: 300px;
+  height: 300px;
 }
+.pdf-flex-item img {
+  width: 300px;
+  height: 300px;
+} */
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
@@ -79,35 +88,25 @@
     border-radius: 20px;
     border: none;
   }
-  .carousel {
-    top: 70%;
+  /* .pdf-flex-item img {
+    width: 300px;
+    height: 300px;
   }
-  .carouselBottom {
-    display: inline;
-    background-color: blueviolet;
-}
+  .pdf-flex-item{
+    width: 300px;
+    height: 300px;
+  } */
 
 } 
 
 @media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape) {
-  
-  .carouselBottom {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 30vh;
-    flex-wrap: wrap;
-    width: 10vh;
-    bottom: 10vh;
+
+/* .pdf-flex-item img {
+  width: 300px;
+  height: 300px;
 }
-.pdfViewer{
-  width: 67%;
-  height: 63%;
-  top: 5%;
-  
-}
-.carousel {
-  top: 45%
-}
+.pdf-flex-item{
+  width: 300px;
+  height: 300px;
+} */
 } 

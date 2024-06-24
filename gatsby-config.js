@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `My Gatsby and Prismic blog`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Hotel brochure`,
+    description: `curtain`,
+    author: `babusek`,
   },
   plugins: [
     `gatsby-plugin-sass`,
@@ -16,6 +16,19 @@ module.exports = {
       options: {
         repositoryName: "curtains",
         accessToken: process.env.PRISMIC_ACCESS_TOKEN, // PRISMIC_ACCESS_TOKEN
+        path: "/brochure",
+        previews: true,
+        sharpKeys: [/image|photo|picture|logo|icon/],
+        pages: [
+          {
+            // (optional, builds pages dynamically)
+            type: "Brochure", // TypeName from prismic
+            match: "/brochure/:uid", // Pages will be generated under this pattern
+            path: "/brochure", // Placeholder page for unpublished documents
+            component: require.resolve("./src/pages/index.js"),
+            // component: require.resolve("./src/04.templates/brochure.js"),
+          },
+        ],
       },
     },
     {
@@ -36,12 +49,13 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `standalone`,
-        icon: `src/static/curtain.png`, // This path is relative to the root of the site.
-        crossOrigin: `use-credentials`
+        crossOrigin: `use-credentials`,
+        cache_busting_mode: `none`,
+        icon: `favicons/tile310x310.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
   ],
 }

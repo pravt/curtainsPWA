@@ -1,13 +1,41 @@
 import React from 'react'
 import Layout from '../components/layout'
-import SEO from '../components/seo'
-
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
-
+import Metadata from "../components/metadata"
+import {
+  getWebsiteMeta
+} from '../utils/index'
+const NotFoundPage = (props) => {
+  const { data } = props
+  const websiteMeta = getWebsiteMeta(data)
+  return (<Layout>
+    <Metadata  websiteMeta={websiteMeta} title={websiteMeta.title.text} description={websiteMeta.description.text} />
+     
+   </Layout>
+ )
+ 
+}
+  
+  
 export default NotFoundPage
+
+
+export const pageQuery = graphql`
+  query($uid: String) {
+    prismicBlogpost(uid: { eq: $uid }) {
+      data {
+        body {
+          ... on PrismicBlogpostBodyWebsitemeta {
+            primary {
+              title {
+                text
+              }
+              description {
+                text
+              }
+            }
+          }
+        }
+      }
+    }
+    }
+`

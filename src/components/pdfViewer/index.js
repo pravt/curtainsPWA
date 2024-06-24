@@ -1,17 +1,20 @@
-import React from 'react'
+import React from 'react';
 function PdfViewer({ fileURL, closePreview }) {
-
-  return (
-      <>
-        <div className="pdfIframeContainer">
-        <iframe height="100%" width="100%" src={fileURL} frameBorder="0"/>
-        </div>
-        </>
-  )
+        return (
+            <>
+                <button type="button" className="overlay-close pdf-viewer-close" onClick={e => closePreview()}>
+                    Close
+                </button>
+    
+                <div className="scroll-wrapper">
+                    <iframe title="image" src={fileURL} frameBorder="0" allowFullScreen />
+                </div>
+            </>
+        );
 }
 
-PdfViewer.defaultProps = {}
+PdfViewer.defaultProps = {};
 
-PdfViewer.propTypes = {}
+PdfViewer.propTypes = {};
 
-export default PdfViewer
+export default PdfViewer;
